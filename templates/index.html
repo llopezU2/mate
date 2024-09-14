@@ -1,122 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Replica Navbar</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrices</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='main_page.css') }}">
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main_page.css') }}"
+    />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar">
-        <!-- Logo de la empresa -->
-        <div class="navbar-logo">
-            <a href="#">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
-            </a>
-        </div>
-        <!-- Links de navegación -->
-        <ul class="nav-links">
-            <li><a href="#">Matriz con Operaciones básicas</a></li>
-            <li><a href="#">Método 1</a></li>
-            <li><a href="#">Método 2</a></li>
-            <li><a href="#">Créditos</a></li>
-        </ul>
+      <!-- Logo de la empresa -->
+      <div class="navbar-logo">
+        <a href="{{ url_for('index')}}">
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Logo"
+            class="logo"
+          />
+        </a>
+      </div>
+      <!-- Links de navegación -->
+      <ul class="nav-links">
+        <li>
+          <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
+        </li>
+        <li>
+          <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
+        </li>
+        <li><a href="#">Método 2</a></li>
+        <li><a href="#">Créditos</a></li>
+      </ul>
     </nav>
     <div class="alinear">
+      <h1>Matrices y Operaciones Básicas</h1>
 
-        <h1> Matrices y Operaciones Básicas</h1>
+      <h2>¿Qué es una matriz?</h2>
+      <p>
+        Una matriz es una estructura rectangular de números organizada <br />
+        en filas y columnas. Cada elemento de una matriz se identifica <br />
+        por su posición, que se describe como (i, j), donde i es la fila y j es
+        la columna. <br />
+        Las matrices son muy útiles en diversas áreas de las matemáticas y la
+        informática, <br />
+        como álgebra lineal, gráficos computacionales y procesamiento de datos.
+      </p>
 
-        <h2>
-            ¿Qué es una matriz?
-        </h2>
-        <p>Una matriz es una estructura rectangular de números organizada <br>
-            en filas y columnas. Cada elemento de una matriz se identifica <br>
-            por su posición, que se describe como (i, j), donde i es la fila y j es la columna. <br>
-            Las matrices son muy útiles en diversas áreas de las matemáticas y la informática, <br>
-            como álgebra lineal, gráficos computacionales y procesamiento de datos.</p>
-
-        <h3>Por ejemplo, una matriz de 3x3 (3 columnas y 3 filas) se vería así:</h3>
-        <p class="matriz">
-            \[
-            A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}
-            \]
-        </p>
-
+      <h3>
+        Por ejemplo, una matriz de 3x3 (3 columnas y 3 filas) se vería así:
+      </h3>
+      <p class="matriz">
+        \[ A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}
+        \]
+      </p>
     </div>
 
     <div class="center-content">
-        <h2>
-            Operaciones Básicas con Matrices</h2>
+      <h2>Operaciones Básicas con Matrices</h2>
     </div>
     <!-- Flip Cards Container -->
     <div class="flip-card-container">
-        <!-- Primera Flip Card -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h1>Suma de Matrices</h1>
-                </div>
-                <div class="flip-card-back">
-                    <!-- Contenido original de tu contenedor "container" -->
-                    <div class="container">
-                        <h2 class="fade-in">1. Suma de matrices \(A + B\):</h2>
-                        <p class="fade-in">Para sumar dos matrices, ambas deben tener las mismas dimensiones (el mismo
-                            número de filas y columnas). <br>
-                            La suma de matrices se realiza sumando los elementos correspondientes de cada matriz.</p>
-                        <p class="equations fade-in">
-                            \[
-                            A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}, \quad
-                            B = \begin{pmatrix} 9 & 8 & 7 \\ 6 & 5 & 4 \\ 3 & 2 & 1 \end{pmatrix}
-                            \]
-                        </p>
-                        <p class="equations fade-in">
-                            \[
-                            A + B = \begin{pmatrix} 1 + 9 & 2 + 8 & 3 + 7 \\ 4 + 6 & 5 + 5 & 6 + 4 \\ 7 + 3 & 8 + 2 & 9
-                            + 1\end{pmatrix}
-                            \]
-                        </p>
-                        <h4>La suma de las matrices A y B da como resultado la siguiente matriz:</h4>
-                        <p class="equations fade-in">
-                            \[
-                            A + B = \begin{pmatrix} 10 & 10 & 10 \\ 10 & 10 & 10 \\ 10 & 10 & 10 \end{pmatrix}
-                            \]
-                        </p>
-                    </div>
-                </div>
+      <!-- Primera Flip Card -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h1>Suma de Matrices</h1>
+          </div>
+          <div class="flip-card-back">
+            <!-- Contenido original de tu contenedor "container" -->
+            <div class="container">
+              <h2 class="fade-in">1. Suma de matrices \(A + B\):</h2>
+              <p class="fade-in">
+                Para sumar dos matrices, ambas deben tener las mismas
+                dimensiones (el mismo número de filas y columnas). <br />
+                La suma de matrices se realiza sumando los elementos
+                correspondientes de cada matriz.
+              </p>
+              <p class="equations fade-in">
+                \[ A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+                \end{pmatrix}, \quad B = \begin{pmatrix} 9 & 8 & 7 \\ 6 & 5 & 4
+                \\ 3 & 2 & 1 \end{pmatrix} \]
+              </p>
+              <p class="equations fade-in">
+                \[ A + B = \begin{pmatrix} 1 + 9 & 2 + 8 & 3 + 7 \\ 4 + 6 & 5 +
+                5 & 6 + 4 \\ 7 + 3 & 8 + 2 & 9 + 1\end{pmatrix} \]
+              </p>
+              <h4>
+                La suma de las matrices A y B da como resultado la siguiente
+                matriz:
+              </h4>
+              <p class="equations fade-in">
+                \[ A + B = \begin{pmatrix} 10 & 10 & 10 \\ 10 & 10 & 10 \\ 10 &
+                10 & 10 \end{pmatrix} \]
+              </p>
+              <a href="{{ url_for('suma') }}" class="button">Ir a Suma de Matrices</a>
             </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Segunda Flip Card (vacía por ahora, puede agregar contenido más adelante) -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h1>Resta de Matrices</h1>
-                </div>
-                <div class="flip-card-back">
-                    <h2>Back 2</h2>
-                    <p>Contenido de la segunda tarjeta.</p>
-                </div>
-            </div>
+      <!-- Segunda Flip Card (vacía por ahora, puede agregar contenido más adelante) -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h1>Resta de Matrices</h1>
+          </div>
+          <div class="flip-card-back">
+            <h2>Back 2</h2>
+            <p>Contenido de la segunda tarjeta.</p>
+          </div>
         </div>
+      </div>
 
-        <!-- Tercera Flip Card (vacía por ahora, puede agregar contenido más adelante) -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h1>Multiplicación de Matrices</h1>
-                </div>
-                <div class="flip-card-back">
-                    <h2>Back 3</h2>
-                    <p>Contenido de la tercera tarjeta.</p>
-                </div>
-            </div>
+      <!-- Tercera Flip Card (vacía por ahora, puede agregar contenido más adelante) -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h1>Multiplicación de Matrices</h1>
+          </div>
+          <div class="flip-card-back">
+            <h2>Back 3</h2>
+            <p>Contenido de la tercera tarjeta.</p>
+          </div>
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

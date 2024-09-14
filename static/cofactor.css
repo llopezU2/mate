@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Fondo oscuro */
+    color: #fff;
+}
+
+.content {
+    padding: 20px;
+    color: white;
+}
+
+/* Estilos de la navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distribuye el logo, los enlaces y la parte derecha */
+    align-items: center;
+    background-color: #000000; /* Fondo de la navbar */
+    padding: 10px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.navbar-logo {
+    flex: 1; /* Logo ocupa espacio, pero no afecta el centrado de los enlaces */
+}
+
+.logo {
+    width: 80px; /* Tamaño del logo */
+}
+
+/* Centrar los enlaces */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 2; /* Ocupa más espacio para centrar los enlaces */
+    list-style-type: none;
+    gap: 30px; /* Espacio entre los links */
+    margin-right: 20%;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff; /* Color blanco para los enlaces */
+    font-size: 16px;
+    padding: 5px 0; /* Añade algo de espacio alrededor del texto */
+    position: relative;
+    transition: all 0.3s ease-in-out; /* Suaviza la animación */
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: white; /* Color del borde */
+    transform: scaleX(0); /* Inicialmente invisible */
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1); /* Borde crece horizontalmente */
+}
+
+.matrix-input {
+    width: 50px;
+    text-align: center;
+}
+table {
+    margin: 20px auto;
+}
+td {
+    padding: 10px;
+}
+.result {
+    text-align: center;
+    margin-top: 20px;
+}
+.error {
+    color: red;
+    text-align: center;
+}

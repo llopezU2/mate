@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Cofactor</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='cofactor.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- Logo de la empresa -->
+      <div class="navbar-logo">
+        <a href="{{ url_for('index')}}">
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Logo"
+            class="logo"
+          />
+        </a>
+      </div>
+      <!-- Links de navegación -->
+      <ul class="nav-links">
+        <li>
+          <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
+        </li>
+        <li>
+          <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
+        </li>
+        <li><a href="#">Método 2</a></li>
+        <li><a href="#">Créditos</a></li>
+      </ul>
+    </nav>
+    <h1 style="text-align: center">Calculadora de Cofactor</h1>
+
+    <form method="POST" style="text-align: center">
+      <table>
+        <!-- Entradas para la matriz -->
+        <tr>
+          <td>
+            <input class="matrix-input" type="text" name="cell00" required />
+          </td>
+          <td>
+            <input class="matrix-input" type="text" name="cell01" required />
+          </td>
+          <td>
+            <input class="matrix-input" type="text" name="cell02" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input class="matrix-input" type="text" name="cell10" required />
+          </td>
+          <td>
+            <input class="matrix-input" type="text" name="cell11" required />
+          </td>
+          <td>
+            <input class="matrix-input" type="text" name="cell12" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input class="matrix-input" type="text" name="cell20" required />
+          </td>
+          <td>
+            <input class="matrix-input" type="text" name="cell21" required />
+          </td>
+          <td>
+            <input class="matrix-input" type="text" name="cell22" required />
+          </td>
+        </tr>
+      </table>
+      <button type="submit">Calcular</button>
+    </form>
+
+    <!-- Mostrar error si ocurre -->
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <!-- Mostrar determinante si está disponible -->
+    {% if det is not none %}
+    <div class="result">
+      <h3>Determinante: {{ det }}</h3>
+    </div>
+    {% endif %}
+
+    <!-- Mostrar matriz inversa si está disponible -->
+    {% if invM %}
+    <div class="result">
+      <h3>Matriz Inversa:</h3>
+      <table>
+        {% for row in invM %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endif %}
+  </body>
+</html>
