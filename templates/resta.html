@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resta de Matrices</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      // Función para generar las matrices dinámicamente
+      function generarMatrices() {
+        const filas = parseInt(document.getElementById("filas").value);
+        const columnas = parseInt(document.getElementById("columnas").value);
+        
+        const matriz1Div = document.getElementById("matriz1");
+        const matriz2Div = document.getElementById("matriz2");
+        
+        matriz1Div.innerHTML = "";  // Limpiar contenido previo
+        matriz2Div.innerHTML = "";  // Limpiar contenido previo
+        
+        // Crear inputs para la matriz 1
+        for (let i = 0; i < filas; i++) {
+          const row1 = document.createElement("div");
+          row1.classList.add("row");
+          for (let j = 0; j < columnas; j++) {
+            const input1 = document.createElement("input");
+            input1.type = "text";
+            input1.name = `mat1_${i}_${j}`;
+            input1.classList.add("form-control");
+            input1.style.width = "60px";
+            input1.style.display = "inline";
+            row1.appendChild(input1);
+          }
+          matriz1Div.appendChild(row1);
+        }
+        
+        // Crear inputs para la matriz 2
+        for (let i = 0; i < filas; i++) {
+          const row2 = document.createElement("div");
+          row2.classList.add("row");
+          for (let j = 0; j < columnas; j++) {
+            const input2 = document.createElement("input");
+            input2.type = "text";
+            input2.name = `mat2_${i}_${j}`;
+            input2.classList.add("form-control");
+            input2.style.width = "60px";
+            input2.style.display = "inline";
+            row2.appendChild(input2);
+          }
+          matriz2Div.appendChild(row2);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">Resta de Matrices (Tamaño Dinámico)</h2>
+      
+      <form action="/resta" method="POST" class="mt-4">
+        <div class="mb-3">
+          <label for="filas" class="form-label">Ingrese el número de filas:</label>
+          <input id="filas" type="number" name="filas" class="form-control" min="1" max="10" value="3" onchange="generarMatrices()" required>
+        </div>
+        <div class="mb-3">
+          <label for="columnas" class="form-label">Ingrese el número de columnas:</label>
+          <input id="columnas" type="number" name="columnas" class="form-control" min="1" max="10" value="3" onchange="generarMatrices()" required>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Matriz 1</h4>
+            <div id="matriz1">
+              <!-- Los inputs para la matriz 1 serán generados aquí -->
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h4>Matriz 2</h4>
+            <div id="matriz2">
+              <!-- Los inputs para la matriz 2 serán generados aquí -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary">Calcular Resta</button>
+        </div>
+      </form>
+
+      <!-- Mostrar el resultado si existe -->
+      {% if resultado %}
+      <div class="mt-5">
+        <h4>Resultado de la Resta</h4>
+        <table class="table table-bordered">
+          {% for fila in resultado %}
+          <tr>
+            {% for elem in fila %}
+            <td>{{ elem }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      // Llamar a la función cuando la página cargue para generar los inputs predeterminados
+      window.onload = generarMatrices;
+    </script>
+  </body>
+</html>
