@@ -142,6 +142,11 @@ body {
     margin-top: 20px;
 }
 
+.ecuacion{
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
 /* Animaciones */
 .fade-in {
     opacity: 0;
@@ -175,4 +180,5 @@ body {
     text-align: left;
     margin-left: 6.5%;
     margin-top: 50px;
+    line-height: 1.6;
 }
