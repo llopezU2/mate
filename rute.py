@@ -40,30 +40,45 @@ def suma():
 def resta():
     if request.method == 'POST':
         try:
-            # Obtener el número de filas y columnas ingresados por el usuario
             filas = int(request.form['filas'])
             columnas = int(request.form['columnas'])
             
-            # Obtener los valores de las matrices desde el formulario según el tamaño seleccionado
-            mat1 = []
-            mat2 = []
-            for i in range(filas):
-                row1 = [float(request.form.get(f'mat1_{i}_{j}', 0)) for j in range(columnas)]
-                row2 = [float(request.form.get(f'mat2_{i}_{j}', 0)) for j in range(columnas)]
-                mat1.append(row1)
-                mat2.append(row2)
+            # Obtener las matrices desde el formulario
+            matriz1 = obtener_matriz_formulario('mat1_', filas, columnas)
+            matriz2 = obtener_matriz_formulario('mat2_', filas, columnas)
             
-            # Usar la clase Resta para realizar la resta de las matrices
-            resultado = Resta.restar_matrices(mat1, mat2)
+            # Calcular la resta de matrices
+            resultado = calcular_resta(matriz1, matriz2)
             
-            # Renderizar la página con el resultado
-            return render_template('resta.html', resultado=resultado)
+            # Renderizar la plantilla con el resultado y las matrices persistidas
+            return render_template('resta.html', resultado=resultado, filas=filas, columnas=columnas, matriz1=matriz1, matriz2=matriz2)
         
-        except ValueError as e:
-            return render_template('resta.html', error="Por favor, ingrese números válidos.")
+        except Exception as e:
+            print("Error:", e)
+            return render_template('resta.html', error="Error al calcular la resta de matrices.")
     
-    # Si es un GET, mostrar la página sin resultado
-    return render_template('resta.html')
+    # Si es una solicitud GET, simplemente mostrar la página con el formulario vacío
+    return render_template('resta.html', filas=None, columnas=None, matriz1=None, matriz2=None)
+
+
+def obtener_matriz_formulario(prefix, filas, columnas):
+    matriz = []
+    for i in range(filas):
+        fila = []
+        for j in range(columnas):
+            valor = int(request.form.get(f'{prefix}{i}_{j}', 0))  # Obtener el valor del input
+            fila.append(valor)
+        matriz.append(fila)
+    return matriz
+
+def calcular_resta(matriz1, matriz2):
+    resultado = []
+    for i in range(len(matriz1)):
+        fila_resultado = []
+        for j in range(len(matriz1[0])):
+            fila_resultado.append(matriz1[i][j] - matriz2[i][j])
+        resultado.append(fila_resultado)
+    return resultado
 
 
 
