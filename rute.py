@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from cofactor import calcular_determinante_y_inversa
 from resta import Resta
+from suma import Suma
 
 app = Flask(__name__)
 
@@ -31,10 +32,49 @@ def cofactor():
     # Si es un GET, simplemente muestra la página de cofactor
     return render_template('cofactor.html')
 
-@app.route('/suma')
+@app.route('/suma', methods=['GET', 'POST'])
 def suma():
-    # Renderiza la página de suma de matrices (lógica se agregará más adelante)
-    return render_template('suma.html')
+    if request.method == 'POST':
+        try:
+            filas = int(request.form['filas'])
+            columnas = int(request.form['columnas'])
+            
+            # Obtener las matrices desde el formulario
+            matriz1 = obtener_matriz_formulario('mat1_', filas, columnas)
+            matriz2 = obtener_matriz_formulario('mat2_', filas, columnas)
+            
+            # Calcular la suma de matrices
+            resultado = calcular_suma(matriz1, matriz2)
+            
+            # Renderizar la plantilla con el resultado y las matrices persistidas
+            return render_template('suma.html', resultado=resultado, filas=filas, columnas=columnas, matriz1=matriz1, matriz2=matriz2)
+        
+        except Exception as e:
+            print("Error:", e)
+            return render_template('suma.html', error="Error al calcular la suma de matrices.")
+    
+    # Si es una solicitud GET, simplemente mostrar la página con el formulario vacío
+    return render_template('suma.html', filas=None, columnas=None, matriz1=None, matriz2=None)
+
+def obtener_matriz_formulario(prefix, filas, columnas):
+    matriz = []
+    for i in range(filas):
+        fila = []
+        for j in range(columnas):
+            valor = int(request.form.get(f'{prefix}{i}_{j}', 0))  # Obtener el valor del input
+            fila.append(valor)
+        matriz.append(fila)
+    return matriz
+
+def calcular_suma(matriz1, matriz2):
+    resultado = []
+    for i in range(len(matriz1)):
+        fila_resultado = []
+        for j in range(len(matriz1[0])):
+            fila_resultado.append(matriz1[i][j] + matriz2[i][j])  
+        resultado.append(fila_resultado)
+    return resultado
+
 
 @app.route('/resta', methods=['GET', 'POST'])
 def resta():
