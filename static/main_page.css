@@ -4,6 +4,42 @@ body {
     font-family: Arial, sans-serif;
     background-color: #000000; /* Fondo oscuro */
     color: #fff;
+    opacity: 0;
+    transition: opacity 1.5s ease-in;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+.animated-line {
+    border: none;
+    height: 2px;
+    background-color: transparent; /* Línea transparente para que no interfiera */
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(180deg, transparent, #03e9f4, transparent);
+    animation: anim-line 1s linear infinite;
+    animation-delay: 0.5s;
+}
+
+@keyframes anim-line {
+    0% {
+        left: -100%;
+    }
+    50%,
+    100% {
+        left: 100%;
+    }
 }
 
 .content {
@@ -83,28 +119,33 @@ body {
 /* Estilos para las flip cards */
 .flip-card-container {
     display: flex;
-    gap: 80px;
+    gap: 100px;
     justify-content: center;
     padding: 50px;
+    margin-bottom: 50px;
+    
 }
 
 .flip-card {
     background-color: transparent;
-    width: 500px;
+    width: 450px;
     height: 800px;
-    perspective: 1000px; /* Efecto de perspectiva 3D */
+    perspective: 1000px; 
+    
 }
 
 .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.6s, box-shadow 0.6s;
     transform-style: preserve-3d;
+    
 }
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg); /* Giro de la tarjeta */
+    
 }
 
 .flip-card-front, .flip-card-back {
@@ -123,18 +164,27 @@ body {
 
 .flip-card-front {
     background-color: rgba(0, 255, 255, 0.13);
-    color: white;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 5px rgb(38, 120, 113); /* Sombra en la parte frontal */
+
 }
 
 .flip-card-back {
     background-color: rgba(23, 59, 68, 0.253);
     color: white;
     transform: rotateY(180deg); /* Parte trasera invertida inicialmente */
+    box-shadow: 0px 0px 50px 5px rgb(38, 120, 113); /* Sombra en la parte frontal */
+
+
 }
+
+
 
 /* Estilos adicionales */
 .container {
     text-align: left;
+    font-family: "Homer Simpson UI";
+    line-height: 150%;
 }
 
 .equations {
@@ -166,12 +216,8 @@ body {
     text-align: center;
 }
 
-.center-content {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    text-align: center;
-}
+
+
 
 .alinear{
     display: block;
@@ -182,3 +228,182 @@ body {
     margin-top: 50px;
     line-height: 1.6;
 }
+
+/*COFACTORES ESTILOS*/
+
+/* Estilos para la sección dividida en dos partes */
+.section-wrapper {
+    display: flex;
+    justify-content: space-between; /* Para que los elementos se distribuyan uno a cada lado */
+    align-items: center; /* Para alinear verticalmente */
+    padding: 20px;
+    gap: 0px; /* Espacio entre las dos columnas */
+    margin-top: 50px;
+}
+
+.section-content {
+    flex: 1;
+    max-width: 40%; /* Limitar el tamaño de la sección de contenido a la mitad de la pantalla */
+    color: #ffffff;
+}
+
+.flip-card-container2 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Mueve la card al borde derecho */
+    margin-bottom: 100px;
+    margin-left: 10%;
+    
+}
+
+.flip-card2 {
+    background-color: transparent;
+    width: 480px;
+    height: 830px;
+    perspective: 1000px; /* Efecto de perspectiva 3D */
+}
+
+.section-content {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin-left: 6.5%;
+    margin-top: 50px;
+    line-height: 1.6;
+}
+
+.equation2{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajustes para las nuevas flip cards (versión 2) */
+.flip-card-inner2 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s, box-shadow 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card2:hover .flip-card-inner2 {
+    transform: rotateY(180deg); /* Giro de la tarjeta */
+}
+
+.flip-card-front2, .flip-card-back2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front2 {
+    background-color: rgba(0, 255, 255, 0.13);
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 5px rgb(38, 120, 113); /* Sombra en la parte frontal */
+}
+
+.flip-card-back2 {
+    background-color: rgba(23, 59, 68, 0.253);
+    color: white;
+    transform: rotateY(180deg); /* Parte trasera invertida inicialmente */
+    box-shadow: 0px 0px 50px 5px rgb(38, 120, 113); /* Sombra en la parte trasera */
+}
+
+.alinear2{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin-top: 50px;
+    line-height: 1.6;
+}
+
+/* Ajustes adicionales */
+.container2 {
+    text-align: left;
+    font-family: "Homer Simpson UI";
+    line-height: 150%;
+}
+
+.equations2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.ecuacion2 {
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
+/* Animaciones */
+.fade-in2 {
+    opacity: 0;
+    animation: fadeIn2 2s forwards;
+}
+
+@keyframes fadeIn2 {
+    to {
+        opacity: 1;
+    }
+}
+
+
+.custom-vr {
+    width: 2px;
+    height: 75vh; /* La altura se puede ajustar */
+    background: linear-gradient(to bottom, #03e9f4, rgba(0, 0, 0, 0), #03e9f4); /* Animación de color */
+    margin: 0 auto; /* Centrar la línea */
+    background-size: 100% 200%; /* Permite el desplazamiento del fondo */
+    animation: animate-vr 1.5s linear infinite;
+}
+
+@keyframes animate-vr {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.equation3{
+
+    text-size-adjust: 1.5rem;
+
+}
+
+
+
+
+/*NO TOCAR*/
+
+.titulos {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #d8d8d8; 
+    text-align: center;
+    /* Sombra con múltiples capas para dar el efecto de desplazamiento */
+    text-shadow: 
+        3px 3px 0px rgba(0, 0, 0, 0.2),  /* Primera sombra */
+        6px 6px 0px rgba(0, 0, 0, 0.2),  /* Segunda sombra */
+        9px 9px 0px rgba(0, 0, 0, 0.2),  /* Tercera sombra */
+        12px 12px 0px rgba(0, 0, 0, 0.2), /* Cuarta sombra */
+        15px 15px 0px rgba(0, 0, 0, 0.2), /* Quinta sombra */
+        18px 18px 0px rgba(0, 0, 0, 0.2), /* Sexta sombra */
+        21px 21px 0px rgba(0, 0, 0, 0.2), /* Séptima sombra */
+        24px 24px 0px rgba(0, 0, 0, 0.2); /* Octava sombra */
+}
+
+
+

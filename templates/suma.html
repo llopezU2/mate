@@ -8,6 +8,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{{ url_for('static', filename='suma.css') }}" />
   <script>
+
+    window.addEventListener('load', function () {
+      document.body.classList.add('loaded');
+    });
+
     // Función para generar las matrices dinámicamente
     function generarMatrices() {
       const filas = parseInt(document.getElementById("filas").value);
@@ -95,14 +100,14 @@
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
-      .then(data => {
-        // Reemplazar el contenido del documento con la respuesta actualizada
-        document.body.innerHTML = data;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+        .then(response => response.text())
+        .then(data => {
+          // Reemplazar el contenido del documento con la respuesta actualizada
+          document.body.innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
 
     // Validar si las matrices están completas
@@ -191,7 +196,8 @@
         <label for="filas" class="form-label">Ingrese el número de filas:</label>
         <div class="input-container">
           <button type="button" class="btn-decrement" onclick="decrementValue('filas')">-</button>
-          <input id="filas" type="number" name="filas" class="form-control no-manual" min="1" max="10" value="3" onchange="generarMatrices()" required>
+          <input id="filas" type="number" name="filas" class="form-control no-manual" min="1" max="10" value="3"
+            onchange="generarMatrices()" required>
           <button type="button" class="btn-increment" onclick="incrementValue('filas')">+</button>
         </div>
       </div>
@@ -200,7 +206,8 @@
         <label for="columnas" class="form-label">Ingrese el número de columnas:</label>
         <div class="input-container">
           <button type="button" class="btn-decrement" onclick="decrementValue('columnas')">-</button>
-          <input id="columnas" type="number" name="columnas" class="form-control no-manual" min="1" max="10" value="3" onchange="generarMatrices()" required>
+          <input id="columnas" type="number" name="columnas" class="form-control no-manual" min="1" max="10" value="3"
+            onchange="generarMatrices()" required>
           <button type="button" class="btn-increment" onclick="incrementValue('columnas')">+</button>
         </div>
       </div>
@@ -222,8 +229,14 @@
         </div>
       </div>
 
-      <div class="text-center mt-4">
-        <button type="submit" class="btn btn-primary">Calcular Suma</button>
+      <div class="text-center mt-4 login-box">
+        <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Calcular Resta
+        </button>
       </div>
 
     </form>
