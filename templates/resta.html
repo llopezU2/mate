@@ -195,7 +195,7 @@ function enviarFormulario() {
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
       </a>
     </div>
-    <!-- Links de navegación -->
+    <!-- NAVBAR -->
     <ul class="nav-links">
       <li>
         <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
@@ -218,7 +218,7 @@ function enviarFormulario() {
         <label for="filas" class="form-label">Ingrese el número de filas:</label>
         <div class="input-container">
           <button type="button" class="btn-decrement" onclick="decrementValue('filas')">-</button>
-          <input id="filas" type="number" name="filas" class="form-control no-manual" min="1" max="10" value="3" onkeydown="return false;" onchange="generarMatrices()" required>
+          <input id="filas" type="number" name="filas" class="form-control no-manual" min="1" max="5" value="3" onkeydown="return false;" onchange="generarMatrices()" required>
           <button type="button" class="btn-increment" onclick="incrementValue('filas')">+</button>
         </div>
       </div>
@@ -227,7 +227,7 @@ function enviarFormulario() {
         <label for="columnas" class="form-label">Ingrese el número de columnas:</label>
         <div class="input-container">
           <button type="button" class="btn-decrement" onclick="decrementValue('columnas')">-</button>
-          <input id="columnas" type="number" name="columnas" class="form-control no-manual" min="1" max="10" value="3" onkeydown="return false;" onchange="generarMatrices()" required>
+          <input id="columnas" type="number" name="columnas" class="form-control no-manual" min="1" max="5" value="3" onkeydown="return false;" onchange="generarMatrices()" required>
           <button type="button" class="btn-increment" onclick="incrementValue('columnas')">+</button>
         </div>
       </div>
