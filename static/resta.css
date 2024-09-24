@@ -110,20 +110,59 @@ body.loaded {
     width: 50px;
     text-align: center;
 }
-table {
-    margin: 20px auto;
-}
-td {
-    padding: 10px;
-}
-.result {
+
+
+/*TABLA DE RESULTADOS*/
+
+/* Estilos para la tabla de resultados */
+.table {
+    width: 80%;
+    margin: 25px auto;
+    border-collapse: collapse;
+    font-size: 18px;
     text-align: center;
-    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #111; /* Fondo oscuro para la tabla */
+    color: #fff; /* Texto blanco */
 }
-.error {
-    color: red;
-    text-align: center;
+
+/* Estilo para las celdas y bordes */
+.table th, .table td {
+    border: 1px solid #444; /* Bordes oscuros */
+    padding: 12px 15px;
 }
+
+/* Estilo para las filas pares */
+.table tr:nth-child(even) {
+    background-color: #1a1a1a; /* Color de fondo alternativo para las filas pares */
+}
+
+/* Efecto hover en las filas */
+.table tr:hover {
+    background-color: #333; /* Color cuando se pasa el mouse sobre una fila */
+    cursor: default;
+}
+
+/* Estilos para los encabezados de las columnas */
+.table th {
+    background-color: #03a9f4; /* Color de fondo para los encabezados */
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .table {
+        font-size: 16px;
+        width: 95%;
+    }
+    
+    .table th, .table td {
+        padding: 8px;
+    }
+}
+
 
 /* Contenedor de las matrices */
 #matriz1, #matriz2 {
@@ -281,22 +320,31 @@ td {
     }
 }
 
+
 /* Estilos para la tabla de resultados */
-.table-bordered {
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    margin-top: 25px;
+}
+.table-bordered {
+    width: 50%;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 18px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .table-bordered th,
 .table-bordered td {
     border: 1px solid #ddd;
-    padding: 12px 15px;
+    padding: 12px 80px;
 }
 
 .table-bordered th {
@@ -307,11 +355,11 @@ td {
 }
 
 .table-bordered tr:nth-child(even) {
-    background-color: #f2f2f2; /* Color para las filas pares */
+    background-color: #000000; /* Color para las filas pares */
 }
 
 .table-bordered tr:hover {
-    background-color: #f1f1f1; /* Color cuando se pasa el mouse sobre una fila */
+    background-color: #56563f77; /* Color cuando se pasa el mouse sobre una fila */
     cursor: default;
 }
 

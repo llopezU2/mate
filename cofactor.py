@@ -27,6 +27,6 @@ def calcular_determinante_y_inversa(a):
     aT = [[aCof[j][i] for j in range(3)] for i in range(3)]
 
     # Calcular inversa dividiendo la transpuesta de los cofactores por el determinante
-    invM = [[aT[i][j] / det for j in range(3)] for i in range(3)]
+    invM = [[round(aT[i][j] / det, 2) for j in range(3)] for i in range(3)]
 
     return invM, det

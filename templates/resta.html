@@ -267,7 +267,8 @@ function enviarFormulario() {
 
     <!-- Mostrar el resultado si existe -->
     {% if resultado %}
-    <div class="mt-5">
+    <div class="table-container">
+      <div class="mt-5">
       <h4>Resultado de la Resta</h4>
       <table class="table table-bordered">
         {% for fila in resultado %}
@@ -280,9 +281,11 @@ function enviarFormulario() {
       </table>
     </div>
     {% endif %}
+    </div>
+    
   </div>
 
-  <hr class="animated-line">
+  <hR class="animated-line">
 </body>
 
 </html>

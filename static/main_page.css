@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Fondo oscuro */
+    background-color: #000000;
     color: #fff;
     opacity: 0;
     transition: opacity 1.5s ease-in;
@@ -12,10 +12,11 @@ body.loaded {
     opacity: 1;
 }
 
+/* Animaciones para la línea */
 .animated-line {
     border: none;
     height: 2px;
-    background-color: transparent; /* Línea transparente para que no interfiera */
+    background-color: transparent;
     position: relative;
     overflow: hidden;
 }
@@ -42,36 +43,30 @@ body.loaded {
     }
 }
 
-.content {
-    padding: 20px;
-    color: white;
-}
-
 /* Estilos de la navbar */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Distribuye el logo, los enlaces y la parte derecha */
+    justify-content: space-between;
     align-items: center;
-    background-color: #000000; /* Fondo de la navbar */
+    background-color: #000000;
     padding: 10px 20px;
     border-bottom: 1px solid #333;
 }
 
 .navbar-logo {
-    flex: 1; /* Logo ocupa espacio, pero no afecta el centrado de los enlaces */
+    flex: 1;
 }
 
 .logo {
-    width: 80px; /* Tamaño del logo */
+    width: 80px;
 }
 
-/* Centrar los enlaces */
 .nav-links {
     display: flex;
     justify-content: center;
-    flex-grow: 2; /* Ocupa más espacio para centrar los enlaces */
+    flex-grow: 2;
     list-style-type: none;
-    gap: 30px; /* Espacio entre los links */
+    gap: 30px;
     margin-right: 20%;
     padding: 0;
 }
@@ -82,11 +77,11 @@ body.loaded {
 
 .nav-links a {
     text-decoration: none;
-    color: #fff; /* Color blanco para los enlaces */
+    color: #fff;
     font-size: 16px;
-    padding: 5px 0; /* Añade algo de espacio alrededor del texto */
+    padding: 5px 0;
     position: relative;
-    transition: all 0.3s ease-in-out; /* Suaviza la animación */
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links a::after {
@@ -96,59 +91,66 @@ body.loaded {
     right: 0;
     bottom: 0;
     height: 3px;
-    background-color: white; /* Color del borde */
-    transform: scaleX(0); /* Inicialmente invisible */
-    transition: transform 0.3s ease-in-out; /* Transición suave */
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-links a:hover::after {
-    transform: scaleX(1); /* Borde crece horizontalmente */
+    transform: scaleX(1);
 }
 
-/* Responsivo: Ajustar tamaño y espaciado en pantallas pequeñas */
+/* Responsivo para la navbar */
 @media (max-width: 768px) {
     .nav-links {
-        gap: 15px; /* Reducir el espacio entre enlaces en pantallas pequeñas */
+        gap: 15px;
     }
 
     .nav-links a {
-        font-size: 14px; /* Reducir el tamaño de los enlaces en pantallas pequeñas */
+        font-size: 14px;
+    }
+
+    .navbar-logo {
+        flex: none;
+        margin-right: 20px;
+    }
+
+    .logo {
+        width: 60px;
     }
 }
 
 /* Estilos para las flip cards */
-.flip-card-container {
+.flip-card-container, .flip-card-container2 {
     display: flex;
     gap: 100px;
     justify-content: center;
     padding: 50px;
     margin-bottom: 50px;
-    
+    overflow: visible; /* Aseguramos que no recorte el contenido */
 }
 
-.flip-card {
+.flip-card, .flip-card2 {
     background-color: transparent;
     width: 450px;
     height: 800px;
-    perspective: 1000px; 
-    
+    perspective: 1200px; /* Ajustamos la perspectiva para evitar recortes */
+    overflow: visible;
 }
 
-.flip-card-inner {
+.flip-card-inner, .flip-card-inner2 {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s, box-shadow 0.6s;
+    transition: transform 0.6s ease;
     transform-style: preserve-3d;
-    
 }
 
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* Giro de la tarjeta */
-    
+.flip-card:hover .flip-card-inner, .flip-card2:hover .flip-card-inner2 {
+    transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front, .flip-card-back, .flip-card-front2, .flip-card-back2 {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -160,45 +162,94 @@ body.loaded {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Aseguramos que no se recorte el contenido interno */
 }
 
+/* Configuración de rotación correcta */
 .flip-card-front {
     background-color: rgba(0, 255, 255, 0.13);
     color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 20px 5px rgb(38, 120, 113); /* Sombra en la parte frontal */
-
+    box-shadow: 0px 0px 20px 5px rgb(38, 120, 113);
 }
 
 .flip-card-back {
     background-color: rgba(23, 59, 68, 0.253);
     color: white;
-    transform: rotateY(180deg); /* Parte trasera invertida inicialmente */
-    box-shadow: 0px 0px 50px 5px rgb(38, 120, 113); /* Sombra en la parte frontal */
-
-
+    transform: rotateY(180deg);
+    box-shadow: 0px 0px 50px 5px rgb(38, 120, 113);
+    overflow-y: auto;
 }
 
-
-
-/* Estilos adicionales */
-.container {
-    text-align: left;
-    font-family: "Homer Simpson UI";
-    line-height: 150%;
+.flip-card-front2 {
+    background-color: rgba(0, 255, 255, 0.13);
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px 5px rgb(38, 120, 113);
 }
 
-.equations {
-    font-size: 1.5rem;
-    margin-top: 20px;
+.flip-card-back2 {
+    background-color: rgba(23, 59, 68, 0.253);
+    color: white;
+    transform: rotateY(180deg);
+    box-shadow: 0px 0px 50px 5px rgb(38, 120, 113);
+    overflow-y: auto;
 }
 
-.ecuacion{
+.flip-card-back p {
     font-size: 0.8rem;
-    margin-top: 20px;
+    max-width: 100%;
+    word-wrap: break-word;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+.flip-card-back2 p {
+    font-size: 0.8rem;
+    max-width: 100%;
+    word-wrap: break-word;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+
+
+/* Ajustes para visibilidad en las flip cards */
+.flip-card-front, .flip-card-back, .flip-card-front2, .flip-card-back2 {
+    backface-visibility: hidden;
+}
+
+/* Ajustes de tamaño para h1 dentro de las tarjetas */
+.flip-card-front h1, .flip-card-back h1, .flip-card-front2 h1, .flip-card-back2 h1 {
+    font-size: 2rem;
+    max-width: 90%;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Responsividad para las flip cards */
+@media (max-width: 768px) {
+    .flip-card-container, .flip-card-container2 {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .flip-card, .flip-card2 {
+        width: 300px;
+        height: 500px;
+    }
+
+    .flip-card-front, .flip-card-back, .flip-card-front2, .flip-card-back2 {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .flip-card-front h1, .flip-card-back h1, .flip-card-front2 h1, .flip-card-back2 h1 {
+        font-size: 1.5rem;
+    }
 }
 
 /* Animaciones */
-.fade-in {
+.fade-in, .fade-in2 {
     opacity: 0;
     animation: fadeIn 2s forwards;
 }
@@ -209,144 +260,44 @@ body.loaded {
     }
 }
 
-.matriz{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    text-align: center;
-}
-
-
-
-
-.alinear{
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    margin-left: 6.5%;
-    margin-top: 50px;
-    line-height: 1.6;
-}
-
-/*COFACTORES ESTILOS*/
-
-/* Estilos para la sección dividida en dos partes */
+/* COFACTORES ESTILOS */
 .section-wrapper {
     display: flex;
-    justify-content: space-between; /* Para que los elementos se distribuyan uno a cada lado */
-    align-items: center; /* Para alinear verticalmente */
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
-    gap: 0px; /* Espacio entre las dos columnas */
     margin-top: 50px;
 }
 
 .section-content {
     flex: 1;
-    max-width: 40%; /* Limitar el tamaño de la sección de contenido a la mitad de la pantalla */
+    max-width: 40%;
     color: #ffffff;
 }
 
-.flip-card-container2 {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start; /* Mueve la card al borde derecho */
-    margin-bottom: 100px;
-    margin-left: 10%;
-    
-}
-
-.flip-card2 {
-    background-color: transparent;
-    width: 480px;
-    height: 830px;
-    perspective: 1000px; /* Efecto de perspectiva 3D */
-}
-
-.section-content {
+.alinear2 {
     display: block;
     justify-content: center;
     align-items: center;
     text-align: left;
-    margin-left: 6.5%;
     margin-top: 50px;
     line-height: 1.6;
 }
 
-.equation2{
+/* Estilos para ecuaciones */
+.equation2, .equation3 {
     display: flex;
     justify-content: left;
     align-items: center;
     text-align: center;
+    word-wrap: break-word;
 }
 
-/* Ajustes para las nuevas flip cards (versión 2) */
-.flip-card-inner2 {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s, box-shadow 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card2:hover .flip-card-inner2 {
-    transform: rotateY(180deg); /* Giro de la tarjeta */
-}
-
-.flip-card-front2, .flip-card-back2 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.flip-card-front2 {
-    background-color: rgba(0, 255, 255, 0.13);
-    color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 20px 5px rgb(38, 120, 113); /* Sombra en la parte frontal */
-}
-
-.flip-card-back2 {
-    background-color: rgba(23, 59, 68, 0.253);
-    color: white;
-    transform: rotateY(180deg); /* Parte trasera invertida inicialmente */
-    box-shadow: 0px 0px 50px 5px rgb(38, 120, 113); /* Sombra en la parte trasera */
-}
-
-.alinear2{
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    margin-top: 50px;
-    line-height: 1.6;
-}
-
-/* Ajustes adicionales */
-.container2 {
-    text-align: left;
-    font-family: "Homer Simpson UI";
-    line-height: 150%;
-}
-
-.equations2 {
+.equations2, .ecuacion2 {
     font-size: 1.5rem;
     margin-top: 20px;
 }
 
-.ecuacion2 {
-    font-size: 0.8rem;
-    margin-top: 20px;
-}
-
-/* Animaciones */
 .fade-in2 {
     opacity: 0;
     animation: fadeIn2 2s forwards;
@@ -358,13 +309,35 @@ body.loaded {
     }
 }
 
+/* Responsivo */
+@media (max-width: 768px) {
+    .section-wrapper {
+        flex-direction: column;
+    }
 
+    .section-content {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .flip-card-container2 {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .flip-card2 {
+        width: 300px;
+        height: 500px;
+    }
+}
+
+/* Animaciones para la línea vertical */
 .custom-vr {
     width: 2px;
-    height: 75vh; /* La altura se puede ajustar */
-    background: linear-gradient(to bottom, #03e9f4, rgba(0, 0, 0, 0), #03e9f4); /* Animación de color */
-    margin: 0 auto; /* Centrar la línea */
-    background-size: 100% 200%; /* Permite el desplazamiento del fondo */
+    height: 75vh;
+    background: linear-gradient(to bottom, #03e9f4, rgba(0, 0, 0, 0), #03e9f4);
+    margin: 0 auto;
+    background-size: 100% 200%;
     animation: animate-vr 1.5s linear infinite;
 }
 
@@ -377,33 +350,20 @@ body.loaded {
     }
 }
 
-.equation3{
 
-    text-size-adjust: 1.5rem;
-
+/* Estilos adicionales */
+.container, .container2 {
+    text-align: left;
+    font-family: "Homer Simpson UI";
+    line-height: 150%;
 }
 
-
-
-
-/*NO TOCAR*/
 
 .titulos {
     font-size: 4rem;
     font-weight: bold;
-    color: #d8d8d8; 
+    color: #d8d8d8;
     text-align: center;
-    /* Sombra con múltiples capas para dar el efecto de desplazamiento */
-    text-shadow: 
-        3px 3px 0px rgba(0, 0, 0, 0.2),  /* Primera sombra */
-        6px 6px 0px rgba(0, 0, 0, 0.2),  /* Segunda sombra */
-        9px 9px 0px rgba(0, 0, 0, 0.2),  /* Tercera sombra */
-        12px 12px 0px rgba(0, 0, 0, 0.2), /* Cuarta sombra */
-        15px 15px 0px rgba(0, 0, 0, 0.2), /* Quinta sombra */
-        18px 18px 0px rgba(0, 0, 0, 0.2), /* Sexta sombra */
-        21px 21px 0px rgba(0, 0, 0, 0.2), /* Séptima sombra */
-        24px 24px 0px rgba(0, 0, 0, 0.2); /* Octava sombra */
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2), 6px 6px 0px rgba(0, 0, 0, 0.2), 9px 9px 0px rgba(0, 0, 0, 0.2), 12px 12px 0px rgba(0, 0, 0, 0.2), 15px 15px 0px rgba(0, 0, 0, 0.2), 18px 18px 0px rgba(0, 0, 0, 0.2), 21px 21px 0px rgba(0, 0, 0, 0.2), 24px 24px 0px rgba(0, 0, 0, 0.2);
 }
-
-
 
