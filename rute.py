@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 from cofactor import calcular_determinante_y_inversa
 from resta import Resta
 from suma import Suma
+import matplotlib.pyplot as plt
+import os
+
 
 app = Flask(__name__)
 
@@ -9,6 +12,64 @@ app = Flask(__name__)
 def index():
     # Renderiza el index.html al cargar la ruta principal
     return render_template('index.html')
+
+# Ruta para la regresión lineal
+@app.route('/regresion', methods=['GET', 'POST'])
+def regresion():
+    if request.method == 'POST':
+        try:
+            # Obtener los valores de x e y desde el formulario
+            x_values = request.form['x_values']
+            y_values = request.form['y_values']
+
+            # Convertir los valores de texto a listas de números
+            x = [float(i) for i in x_values.split(',')]
+            y = [float(i) for i in y_values.split(',')]
+
+            # Verificar que las listas tengan la misma longitud
+            if len(x) != len(y):
+                raise ValueError("Las listas de X e Y deben tener la misma longitud")
+
+            # Calcular las sumas necesarias
+            n = len(x)
+            sum_x = sum(x)
+            sum_y = sum(y)
+            sum_xy = sum(x[i] * y[i] for i in range(n))
+            sum_x2 = sum(xi ** 2 for xi in x)
+
+            # Calcular la pendiente (m)
+            m = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x ** 2)
+            x_media = sum_x / n
+            y_media = sum_y / n
+
+            # Calcular la intersección (b)
+            b = y_media - m * x_media
+
+            # Redondear resultados
+            m = round(m, 2)
+            b = round(b, 2)
+
+            # Graficar la regresión
+            plt.scatter(x, y, color='red', label='Datos')
+            plt.plot(x, [b + m * xi for xi in x], label=f'y = {b} + {m}x', color='blue')
+            plt.xlabel('X')
+            plt.ylabel('Y')
+            plt.title('Regresión Lineal por Mínimos Cuadrados')
+            plt.legend()
+
+            # Guardar la gráfica en una imagen
+            plot_path = os.path.join('static', 'plot_regresion.png')
+            plt.savefig(plot_path)
+            plt.close()
+
+            # Enviar los resultados y la gráfica a la plantilla HTML
+            return render_template('regresion.html', m=m, b=b, plot_url=plot_path)
+        
+        except Exception as e:
+            return render_template('regresion.html', error=str(e))
+    
+    # Si es un GET, simplemente mostrar el formulario
+    return render_template('regresion.html')
 
 @app.route('/cofactor', methods=['GET', 'POST'])
 def cofactor():
