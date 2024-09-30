@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from cofactor import calcular_determinante_y_inversa
+from regresion import calcular_regresion, graficar_regresion
 from resta import Resta
 from suma import Suma
 import matplotlib.pyplot as plt
@@ -26,41 +27,12 @@ def regresion():
             x = [float(i) for i in x_values.split(',')]
             y = [float(i) for i in y_values.split(',')]
 
-            # Verificar que las listas tengan la misma longitud
-            if len(x) != len(y):
-                raise ValueError("Las listas de X e Y deben tener la misma longitud")
+            # Calcular la regresión
+            m, b = calcular_regresion(x, y)
 
-            # Calcular las sumas necesarias
-            n = len(x)
-            sum_x = sum(x)
-            sum_y = sum(y)
-            sum_xy = sum(x[i] * y[i] for i in range(n))
-            sum_x2 = sum(xi ** 2 for xi in x)
-
-            # Calcular la pendiente (m)
-            m = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x ** 2)
-            x_media = sum_x / n
-            y_media = sum_y / n
-
-            # Calcular la intersección (b)
-            b = y_media - m * x_media
-
-            # Redondear resultados
-            m = round(m, 2)
-            b = round(b, 2)
-
-            # Graficar la regresión
-            plt.scatter(x, y, color='red', label='Datos')
-            plt.plot(x, [b + m * xi for xi in x], label=f'y = {b} + {m}x', color='blue')
-            plt.xlabel('X')
-            plt.ylabel('Y')
-            plt.title('Regresión Lineal por Mínimos Cuadrados')
-            plt.legend()
-
-            # Guardar la gráfica en una imagen
+            # Guardar la gráfica
             plot_path = os.path.join('static', 'plot_regresion.png')
-            plt.savefig(plot_path)
-            plt.close()
+            graficar_regresion(x, y, m, b, plot_path)
 
             # Enviar los resultados y la gráfica a la plantilla HTML
             return render_template('regresion.html', m=m, b=b, plot_url=plot_path)
@@ -70,7 +42,6 @@ def regresion():
     
     # Si es un GET, simplemente mostrar el formulario
     return render_template('regresion.html')
-
 @app.route('/cofactor', methods=['GET', 'POST'])
 def cofactor():
     if request.method == 'POST':
