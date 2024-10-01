@@ -1,43 +1,45 @@
-/* Estilos generales */
+/* Estilos del body: solo fondo y algunas configuraciones básicas */
 body {
     font-family: Arial, sans-serif;
     background-color: #000;
     color: #fff;
+    margin: 0;
+    padding: 0;
+}
+/* Centrar el contenido de la página */
+.container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 0;
-    margin: 0;
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
-
 /* Estilos de la navbar */
 .navbar {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between; /* Distribuye el logo, los enlaces y la parte derecha */
     align-items: center;
-    background-color: #000000; 
+    background-color: #000000; /* Fondo de la navbar */
     padding: 10px 20px;
     border-bottom: 1px solid #333;
-    width: 100%;
 }
 
 .navbar-logo {
-    flex: 1; 
+    flex: 1; /* Logo ocupa espacio, pero no afecta el centrado de los enlaces */
 }
 
 .logo {
-    width: 80px;
+    width: 80px; /* Tamaño del logo */
 }
 
 .nav-links {
     display: flex;
     justify-content: center;
-    flex-grow: 2; 
+    flex-grow: 2; /* Ocupa más espacio para centrar los enlaces */
     list-style-type: none;
-    gap: 30px; 
+    gap: 30px; /* Espacio entre los links */
     margin-right: 20%;
-    margin-top: 20px;
     padding: 0;
 }
 
@@ -47,11 +49,11 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #fff;
+    color: #fff; /* Color blanco para los enlaces */
     font-size: 16px;
-    padding: 5px 0; 
+    padding: 5px 0; /* Añade algo de espacio alrededor del texto */
     position: relative;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; /* Suaviza la animación */
 }
 
 .nav-links a::after {
@@ -61,60 +63,68 @@ body {
     right: 0;
     bottom: 0;
     height: 3px;
-    background-color: white; 
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out; 
+    background-color: white; /* Color del borde */
+    transform: scaleX(0); /* Inicialmente invisible */
+    transition: transform 0.3s ease-in-out; /* Transición suave */
 }
 
 .nav-links a:hover::after {
-    transform: scaleX(1);
+    transform: scaleX(1); /* Borde crece horizontalmente */
 }
 
-/* Contenedor principal */
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 20px;
-    flex-wrap: wrap; /* Para que las secciones se acomoden en pantallas pequeñas */
+/* Responsivo: Ajustar tamaño y espaciado en pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        margin-right: 0;
+        gap: 15px; /* Reducir el espacio entre enlaces en pantallas pequeñas */
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Reducir el tamaño de los enlaces en pantallas pequeñas */
+    }
+}
+
+
+/* Contenedor del contenido central, aislado del body */
+.centered-content {
+    width: 80%; /* Puedes ajustar el ancho según lo necesites */
+    max-width: 1200px; /* Ancho máximo */
+    background-color: #111;  /* Fondo oscuro para el contenido */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para darle algo de profundidad */
 }
 
 /* Sección de la matriz */
 .matrix-section {
+    border: 2px solid #03e9f4;
     padding: 20px;
     border-radius: 10px;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Alinear contenido al centro */
 }
 
 .matrix-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    width: 100%; /* Establecer el mismo ancho que los inputs */
 }
 
 .header-label {
     font-size: 1.5rem;
-    color: #31aba7;
-    flex: 1; /* Distribuir las etiquetas equitativamente */
-    text-align: center; /* Centrar el texto */
+    color: #03e9f4;
 }
 
 /* Sección de los resultados en C */
 .result-c-section {
+    border: 2px solid #03e9f4;
     padding: 20px;
     border-radius: 10px;
-    max-width: 50px;
-    height: 230px;
 }
 
 .result-header {
     text-align: center;
     margin-bottom: 10px;
+    color: #03e9f4;
 }
 
 .equation {
@@ -122,63 +132,47 @@ body {
     justify-content: center;
     align-items: center;
     margin: 10px 0;
-    width: 100%; /* Hacer que el ancho sea consistente con la cabecera */
 }
 
-.input-box {
-    width: 50px;
+/* Estilo para los inputs de la matriz y resultados (neon) */
+input[type="text"] {
+    width: 60px;
     height: 40px;
-    font-size: 1.5rem;
+    margin: 10px;
     text-align: center;
-    background-color: transparent;
+    background: transparent;
     border: 2px solid #ffffff;
+    border-radius: 5px;
     color: #ffffff;
-    margin: 0 5px;
+    font-size: 1.5rem;
     outline: none;
-    border-radius: 5px;
-    flex: 1; /* Asegurar que los inputs ocupen el mismo espacio que las letras */
-    justify-content: space-evenly;
+    transition: 0.5s;
 }
 
-.matrix-input{
-    max-width: 50px;
+/* Hover neon para los inputs */
+input[type="text"]:hover {
+    box-shadow: 0 0 10px #2198b6dc, 0 0 20px #2198b6dc, 0 0 40px #2198b6dc, 0 0 80px #2198b6dc;
 }
 
-
-/* Hover para inputs de matrix-section */
-.matrix-input:hover {
-    border-color: #2198b6dc;
-}
-/* Inputs deshabilitados (sólo para mostrar resultados) */
-.result-input {
-    max-width: 20px;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    background-color: transparent;
-    margin: 1px;
-    border-radius: 5px;
-
+/* Efecto focus para inputs */
+input[type="text"]:focus {
+    border: 2px solid #2198b6dc;
+    box-shadow: 0 0 5px #2198b6dc, 0 0 10px #2198b6dc;
 }
 
-.result-input2 {
-    margin-top: 8px;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    background-color: transparent;
-}
-
+/* BOTON CALCULAR COFACTOR */
 
 /* Estilos del contenedor del botón con animación */
 .login-box {
     position: relative;
     display: inline-block;
-    margin-top: 5%;
+    margin-top: 20px;
 }
 
 .login-box button {
     position: relative;
     display: inline-block;
-    padding: 10px 30px;
+    padding: 10px 20px;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -278,55 +272,64 @@ body {
     }
 }
 
-
-/* Sección del resultado */
-.result-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* border: 2px solid #485232; */
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 30px;
-    box-shadow: 0px 0px 20px 5px #485232;
-    /* width: 80%; */
-    max-width: 500px;
-    flex-wrap: wrap;
-}
-
-.result-input{
-    padding: 10px;
-}
-
-.result-box span {
-    font-size: 2rem;
-    color: #46b06f;
-    margin: 0 10px;
-}
-
-/* Responsivo */
+/* Responsivo: Ajuste de botones en pantallas pequeñas */
 @media (max-width: 768px) {
-    .main-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .matrix-section, .result-c-section {
-        width: 80%;
-        align-items: center;
-    }
-
-    .result-box {
-        width: 100%;
-    }
-
-    .input-box, .result-input {
-        width: 40px;
-        height: 30px;
-        font-size: 1.2rem;
-    }
-
-    .result-box span {
-        font-size: 1.5rem;
+    .login-box button {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 }
+
+/* Estilos generales para la sección de resultados */
+.resultados {
+    margin-top: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Título de la sección de resultados */
+.resultados h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/* Contenedor de cada resultado con el valor */
+.equation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para los labels de los resultados (x =, y =, z =) */
+.equation span {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+/* Estilo para los inputs de resultado, con efecto neon */
+.result-box {
+    min-width: 8ch;  /* Mínimo 3 caracteres de ancho (se puede ajustar según lo necesites) */
+    height: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid #03e9f4;
+    color: #03e9f4;
+    margin-left: 10px;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    padding: 5px;
+    width: auto;  /* Permitir que el input se ajuste automáticamente */
+}
+
+/* Efecto hover para los inputs de resultado */
+.result-box:hover {
+    box-shadow: 0 0 10px #03e9f4, 0 0 30px #03e9f4;
+}
+
+
