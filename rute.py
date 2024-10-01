@@ -22,11 +22,11 @@ def regresion():
             x = [float(i) for i in x_values.split(',')]
             y = [float(i) for i in y_values.split(',')]
 
-            m, b = calcular_regresion(x, y)
+            m, b, r = calcular_regresion(x, y)  # Incluimos el coeficiente de correlación 'r'
             plot_path = os.path.join('static', 'plot_regresion.png')
-            graficar_regresion(x, y, m, b, plot_path)
+            graficar_regresion(x, y, m, b, r, plot_path)  # Pasamos 'r' para mostrar en la gráfica
 
-            return render_template('regresion.html', m=m, b=b, plot_url=plot_path)
+            return render_template('regresion.html', m=m, b=b, r=r, plot_url=plot_path)
         
         except Exception as e:
             return render_template('regresion.html', error=str(e))
