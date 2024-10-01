@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Matriz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reduccion.css') }}" />
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- Logo de la empresa -->
+        <div class="navbar-logo">
+          <a href="{{ url_for('index')}}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
+          </a>
+        </div>
+        <!-- NAVBAR -->
+        <ul class="nav-links">
+          <li>
+            <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
+          </li>
+          <li>
+            <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
+          </li>
+          <li><a href="#">Método 2</a></li>
+          <li><a href="#">Créditos</a></li>
+        </ul>
+      </nav>
+
+    <!-- Contenedor principal para la matriz y el resultado en C -->
+    <div class="main-container">
+
+        <!-- Sección de la matriz -->
+        <div class="matrix-section">
+            <div class="matrix-header">
+                <span class="header-label">x</span>
+                <span class="header-label">y</span>
+                <span class="header-label">z</span>
+            </div>
+
+            <div class="equation">
+                <input type="text" class="input-box matrix-input">
+                <input type="text" class="input-box matrix-input">
+                <input type="text" class="input-box matrix-input">
+            </div>
+
+            <div class="equation">
+                <input type="text" class="input-box matrix-input">
+                <input type="text" class="input-box matrix-input">
+                <input type="text" class="input-box matrix-input">
+            </div>
+
+            <div class="equation">
+                <input type="text" class="input-box matrix-input">
+                <input type="text" class="input-box matrix-input">
+                <input type="text" class="input-box matrix-input">
+            </div>
+        </div>
+
+        <!-- Sección de los resultados en C -->
+        <div class="result-c-section">
+            <div class="result-header">
+                <span class="header-label">C</span>
+            </div>
+            <div class="equation">
+                <input type="text" class="input-box result-input2" disabled>
+            </div>
+            <div class="equation">
+                <input type="text" class="input-box result-input2" disabled>
+            </div>
+            <div class="equation">
+                <input type="text" class="input-box result-input2" disabled>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón calcular -->
+    <div class="text-center mt-4 login-box">
+        <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Calcular
+        </button>
+      </div>
+
+    <!-- Sección del resultado -->
+    <div class="result-box">
+        <span>x =</span> <input type="text" class="result-input" disabled>
+        <span>y =</span> <input type="text" class="result-input" disabled>
+        <span>z =</span> <input type="text" class="result-input" disabled>
+    </div>
+
+</body>
+</html>
