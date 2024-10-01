@@ -21,15 +21,13 @@ def resolver_sistema_lineal(A, B):
     X = [0 for _ in range(n)]
     for i in range(n - 1, -1, -1):
         suma = sum(A[i][j] * X[j] for j in range(i + 1, n))
-        X[i] = B[i] - suma
+        X[i] = round(B[i] - suma, 2)  # Limitar a dos decimales
 
     return X
-
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
