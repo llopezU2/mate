@@ -360,6 +360,7 @@ input.no-manual:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    visibility: hidden;
 }
 
 input::-webkit-inner-spin-button,

@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt # type: ignore
-=======
 import matplotlib.pyplot as plt
 
 def calcular_regresion(x, y):
