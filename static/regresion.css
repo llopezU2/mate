@@ -1,0 +1,103 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Cambia esto a flex-start para permitir expansión del contenido */
+    min-height: 100vh; /* Deja que el contenido crezca más allá del viewport si es necesario */
+    margin: 0;
+}
+
+/* Formulario y contenido principal */
+form, .content {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho máximo del contenido */
+    padding: 20px;
+    border: 2px solid #03e9f4;
+    border-radius: 10px;
+    background-color: #111;
+    box-shadow: 0 0 15px #03e9f4;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #03e9f4;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #03e9f4;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #111;
+    border: 2px solid #03e9f4;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #c4ff3d;
+}
+
+/* Botón */
+button {
+    background-color: transparent;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #03e9f4;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #03e9f4;
+    color: #000;
+    box-shadow: 0 0 5px #03e9f4, 0 0 15px #03e9f4, 0 0 30px #03e9f4;
+}
+
+/* Resultado de la regresión */
+p {
+    font-size: 1.5rem;
+}
+
+p:nth-child(odd) {
+    color: #c4ff3d;
+}
+
+img {
+    margin-top: 20px;
+    border: 2px solid #03e9f4;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #03e9f4;
+}
+
+/* Estilos para el mensaje de error */
+p[style*="color: red;"] {
+    color: #ff4c4c;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Permite que el contenido se expanda y sea desplazable */
+html, body {
+    height: auto; /* Permite que la altura se expanda si el contenido lo requiere */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}

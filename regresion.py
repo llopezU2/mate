@@ -1,5 +1,4 @@
-# regresion.py
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 
 def calcular_regresion(x, y):
     if len(x) != len(y):
@@ -10,6 +9,7 @@ def calcular_regresion(x, y):
     sum_y = sum(y)
     sum_xy = sum(x[i] * y[i] for i in range(n))
     sum_x2 = sum(xi ** 2 for xi in x)
+    sum_y2 = sum(yi ** 2 for yi in y)
 
     # Calcular la pendiente (m)
     m = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x ** 2)
@@ -19,18 +19,42 @@ def calcular_regresion(x, y):
     # Calcular la intersección (b)
     b = y_media - m * x_media
 
+    # Calcular el coeficiente de correlación (r)
+    r_numerador = n * sum_xy - sum_x * sum_y
+    r_denominador = ((n * sum_x2 - sum_x ** 2) * (n * sum_y2 - sum_y ** 2)) ** 0.5
+    r = r_numerador / r_denominador if r_denominador != 0 else 0
+
     # Redondear resultados
     m = round(m, 2)
     b = round(b, 2)
+    r = round(r, 4)
 
-    return m, b
+    return m, b, r
 
-def graficar_regresion(x, y, m, b, output_path):
+def graficar_regresion(x, y, m, b, r, output_path):
     plt.scatter(x, y, color='red', label='Datos')
     plt.plot(x, [b + m * xi for xi in x], label=f'y = {b} + {m}x', color='blue')
     plt.xlabel('X')
     plt.ylabel('Y')
-    plt.title('Regresión Lineal por Mínimos Cuadrados')
+    plt.title(f'Regresión Lineal por Mínimos Cuadrados (r = {r})')
     plt.legend()
     plt.savefig(output_path)
     plt.close()
+
+def main():
+    x = [1, 2, 3, 4, 5]  # Ejemplo de datos de X
+    y = [2, 4, 5, 4, 5]  # Ejemplo de datos de Y
+    
+    # Calcular regresión y coeficiente de correlación
+    m, b, r = calcular_regresion(x, y)
+    
+    print(f"La ecuación de la recta es: y = {b} + {m}x")
+    print(f"Coeficiente de correlación (r): {r}")
+    
+    # Guardar la gráfica
+    output_path = 'grafica.png'
+    graficar_regresion(x, y, m, b, r, output_path)
+    print(f"Gráfica guardada en: {output_path}")
+
+if __name__ == "__main__":
+    main()

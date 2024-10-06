@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regresión Lineal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='regresion.css') }}" />
+
 </head>
 <body>
     <h1>Regresión Lineal por Mínimos Cuadrados</h1>
@@ -11,10 +13,10 @@
     <!-- Formulario para ingresar los valores de X e Y -->
     <form action="/regresion" method="POST">
         <label for="x_values">Valores de X (separados por comas):</label><br>
-        <input type="text" id="x_values" name="x_values" required><br><br>
+        <input class="input" type="text" id="x_values" name="x_values" required><br><br>
 
         <label for="y_values">Valores de Y (separados por comas):</label><br>
-        <input type="text" id="y_values" name="y_values" required><br><br>
+        <input class="input" type="text" id="y_values" name="y_values" required><br><br>
 
         <button type="submit">Calcular y Graficar</button>
     </form>
