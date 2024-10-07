@@ -17,22 +17,24 @@
 <body>
   <!-- NAVBAR -->
   <nav class="navbar">
+    <!-- Logo de la empresa -->
     <div class="navbar-logo">
-      <a href="{{ url_for('index')}}">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
-      </a>
+        <a href="{{ url_for('index')}}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
+        </a>
     </div>
+    <!-- Navbar -->
     <ul class="nav-links">
-      <li>
-        <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
-      </li>
-      <li>
-        <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
-      </li>
-      <li><a href="{{ url_for('reduccion') }}">Ir a Reducción de Sistemas</a></li>
-      <li><a href="#">Créditos</a></li>
+        <li>
+            <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
+        </li>
+        <li>
+            <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
+        </li>
+        <li><a href="{{ url_for('reduccion') }}">Reducción de Sistemas de Ecuaciones</a></li>
+        <li><a href="{{ url_for('regresion') }}">Regresión Lineal</a></li>
     </ul>
-  </nav>
+</nav>
 
   <div class="container mt-5">
     <h2 class="text-center">Resta de Matrices 3x3</h2>

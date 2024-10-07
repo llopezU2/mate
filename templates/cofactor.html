@@ -18,25 +18,25 @@
   </script>
 
 
-  <nav class="navbar">
-    <!-- Logo de la empresa -->
-    <div class="navbar-logo">
+<nav class="navbar">
+  <!-- Logo de la empresa -->
+  <div class="navbar-logo">
       <a href="{{ url_for('index')}}">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
       </a>
-    </div>
-    <!-- NAVBAR -->
-    <ul class="nav-links">
+  </div>
+  <!-- Navbar -->
+  <ul class="nav-links">
       <li>
-        <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
+          <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
       </li>
       <li>
-        <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
+          <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
       </li>
-      <li><a href="{{ url_for('reduccion') }}">Ir a Reducción de Sistemas</a></li>
-      <li><a href="#">Créditos</a></li>
-    </ul>
-  </nav>
+      <li><a href="{{ url_for('reduccion') }}">Reducción de Sistemas de Ecuaciones</a></li>
+      <li><a href="{{ url_for('regresion') }}">Regresión Lineal</a></li>
+  </ul>
+</nav>
   <h1 style="text-align: center">Calculadora de Cofactor</h1>
 
   <form class="mb-3" method="POST" style="text-align: center">
