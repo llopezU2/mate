@@ -40,18 +40,18 @@ def inversa_por_cofactores(a):
     adjunta = transponer_matriz(inversa)
     
     # Dividir la adjunta por el determinante para obtener la inversa
-    inversa = [[adjunta[i][j] / det for j in range(3)] for i in range(3)]
+    inversa = [[round(adjunta[i][j] / det, 2) for j in range(3)] for i in range(3)]
     
-    return inversa, det
+    return inversa, round(det, 2)
 
 # Función para multiplicar una matriz 3x3 por un vector 3x1 (matriz inversa por C)
 def multiplicar_matriz_vector(a, c):
     resultado = [0, 0, 0]
     
     # Cálculo del producto matriz por vector
-    resultado[0] = a[0][0] * c[0] + a[0][1] * c[1] + a[0][2] * c[2]
-    resultado[1] = a[1][0] * c[0] + a[1][1] * c[1] + a[1][2] * c[2]
-    resultado[2] = a[2][0] * c[0] + a[2][1] * c[1] + a[2][2] * c[2]
+    resultado[0] = round(a[0][0] * c[0] + a[0][1] * c[1] + a[0][2] * c[2], 2)
+    resultado[1] = round(a[1][0] * c[0] + a[1][1] * c[1] + a[1][2] * c[2], 2)
+    resultado[2] = round(a[2][0] * c[0] + a[2][1] * c[1] + a[2][2] * c[2], 2)
 
     return resultado
 
@@ -69,3 +69,4 @@ def reducir_matrices(A, C):
     Z = resultado[2]
     
     return x, Y, Z, determinante
+

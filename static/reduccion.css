@@ -293,3 +293,81 @@ span {
         padding: 10px;
     }
 }
+
+
+h1{
+    padding: 20px;
+    display: inline-block;
+    margin-left: 20%;
+}
+
+h3{
+    padding: 20px;
+    display: inline-block;
+    margin-left: 20%;
+    
+}
+
+/* Contenedor para centrar el bloque de resultados */
+.resultados-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px; /* Ancho máximo para limitar */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Sombras */
+}
+
+/* Estilo para el título de los resultados */
+.resultados-container h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Estilo para los párrafos */
+.resultados-container p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 100%; /* Para que cada resultado ocupe todo el ancho del contenedor */
+    max-width: 100%; /* Limitar el tamaño máximo */
+    box-shadow: 0 0 10px rgba(3, 233, 244, 0.3); /* Sombra suave */
+}
+
+.resultados-container h3{
+    font-size: 1.2rem;
+    color: #8b3838;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 100%; /* Para que cada resultado ocupe todo el ancho del contenedor */
+    max-width: 100%; /* Limitar el tamaño máximo */
+    box-shadow: 0 0 10px rgba(3, 233, 244, 0.3); /* Sombra suave */
+}
+
+/* Estilo especial para el mensaje de error */
+.error-message {
+    color: #ff4d4d;
+    background-color: #330000;
+    border: 2px solid #ff4d4d;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
