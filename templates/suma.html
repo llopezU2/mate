@@ -4,172 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suma de Matrices</title>
+  <title>Suma de Matrices 3x3</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{{ url_for('static', filename='suma.css') }}" />
   <script>
-
     window.addEventListener('load', function () {
       document.body.classList.add('loaded');
     });
-
-    // Función para generar las matrices dinámicamente
-    function generarMatrices() {
-      const filas = parseInt(document.getElementById("filas").value);
-      const columnas = parseInt(document.getElementById("columnas").value);
-
-      const matriz1Div = document.getElementById("matriz1");
-      const matriz2Div = document.getElementById("matriz2");
-
-      matriz1Div.innerHTML = "";  // Limpiar contenido previo
-      matriz2Div.innerHTML = "";  // Limpiar contenido previo
-
-      // Crear inputs para la matriz 1
-      for (let i = 0; i < filas; i++) {
-        const row1 = document.createElement("div");
-        row1.classList.add("row");
-        for (let j = 0; j < columnas; j++) {
-          const input1 = document.createElement("input");
-          input1.type = "number"; // Cambié a number para mejor control
-          input1.name = `mat1_${i}_${j}`;
-          input1.classList.add("form-control");
-          input1.style.width = "60px";
-          input1.style.display = "inline";
-          row1.appendChild(input1);
-        }
-        matriz1Div.appendChild(row1);
-      }
-
-      // Crear inputs para la matriz 2
-      for (let i = 0; i < filas; i++) {
-        const row2 = document.createElement("div");
-        row2.classList.add("row");
-        for (let j = 0; j < columnas; j++) {
-          const input2 = document.createElement("input");
-          input2.type = "number"; // Cambié a number para mejor control
-          input2.name = `mat2_${i}_${j}`;
-          input2.classList.add("form-control");
-          input2.style.width = "60px";
-          input2.style.display = "inline";
-          row2.appendChild(input2);
-        }
-        matriz2Div.appendChild(row2);
-      }
-    }
-
-    // Función para incrementar el valor del input
-    function incrementValue(id) {
-      var input = document.getElementById(id);
-      var currentValue = parseInt(input.value);
-      if (currentValue < parseInt(input.max)) {
-        input.value = currentValue + 1;
-        input.dispatchEvent(new Event('change')); // Llamar a onchange para actualizar la matriz
-      }
-    }
-
-    // Función para decrementar el valor del input
-    function decrementValue(id) {
-      var input = document.getElementById(id);
-      var currentValue = parseInt(input.value);
-      if (currentValue > parseInt(input.min)) {
-        input.value = currentValue - 1;
-        input.dispatchEvent(new Event('change')); // Llamar a onchange para actualizar la matriz
-      }
-    }
-
-    // Llamar a la función cuando la página cargue para generar los inputs predeterminados
-    window.onload = generarMatrices;
-
-    function enviarFormulario(event) {
-      event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-
-      // Validar matrices antes de enviar el formulario
-      if (!validarMatrices()) {
-        if (confirm("Algunos cuadros están vacíos. ¿Desea llenarlos con 0?")) {
-          llenarMatricesConCeros();
-        } else {
-          alert("Por favor, complete todas las matrices antes de continuar.");
-          return; // No enviar el formulario si el usuario no quiere llenar con 0
-        }
-      }
-
-      const formData = new FormData(document.querySelector('form'));
-
-      // Enviar el formulario vía fetch (AJAX)
-      fetch('/suma', {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => response.text())
-        .then(data => {
-          // Reemplazar el contenido del documento con la respuesta actualizada
-          document.body.innerHTML = data;
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    }
-
-    // Validar si las matrices están completas
-    function validarMatrices() {
-      const filas = parseInt(document.getElementById("filas").value);
-      const columnas = parseInt(document.getElementById("columnas").value);
-
-      let isValid = true; // Bandera para verificar si todas las matrices están llenas
-      const inputsMatriz1 = document.querySelectorAll("[name^='mat1_']");
-      const inputsMatriz2 = document.querySelectorAll("[name^='mat2_']");
-
-      // Validar cada input de la matriz 1
-      inputsMatriz1.forEach((input) => {
-        if (input.value.trim() === "") {
-          input.style.borderColor = "red"; // Resaltar en rojo los campos vacíos
-          isValid = false;
-        } else {
-          input.style.borderColor = ""; // Quitar el resaltado si el campo está lleno
-        }
-      });
-
-      // Validar cada input de la matriz 2
-      inputsMatriz2.forEach((input) => {
-        if (input.value.trim() === "") {
-          input.style.borderColor = "red"; // Resaltar en rojo los campos vacíos
-          isValid = false;
-        } else {
-          input.style.borderColor = ""; // Quitar el resaltado si el campo está lleno
-        }
-      });
-
-      return isValid;
-    }
-
-    // Llenar las matrices vacías con ceros
-    function llenarMatricesConCeros() {
-      const inputsMatriz1 = document.querySelectorAll("[name^='mat1_']");
-      const inputsMatriz2 = document.querySelectorAll("[name^='mat2_']");
-
-      // Llenar matriz 1 con ceros donde los campos estén vacíos
-      inputsMatriz1.forEach((input) => {
-        if (input.value.trim() === "") {
-          input.value = "0";
-          input.style.borderColor = ""; // Quitar resaltado rojo
-        }
-      });
-
-      // Llenar matriz 2 con ceros donde los campos estén vacíos
-      inputsMatriz2.forEach((input) => {
-        if (input.value.trim() === "") {
-          input.value = "0";
-          input.style.borderColor = ""; // Quitar resaltado rojo
-        }
-      });
-    }
   </script>
 </head>
 
 <body>
- <!-- NAVBAR -->
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <!-- Logo de la empresa -->
     <div class="navbar-logo">
       <a href="{{ url_for('index') }}">
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
@@ -189,53 +36,46 @@
   </nav>
 
   <div class="container mt-5">
-    <h2 class="text-center">Suma de Matrices</h2>
+    <h2 class="text-center">Suma de Matrices 3x3</h2>
 
-    <form action="/suma" method="POST" class="mt-4" onsubmit="enviarFormulario(event)">
-      <div class="mb-3 custom-number-input">
-        <label for="filas" class="form-label">Ingrese el número de filas:</label>
-        <div class="input-container">
-          <button type="button" class="btn-decrement" onclick="decrementValue('filas')">-</button>
-          <input id="filas" type="number" name="filas" class="form-control no-manual" min="1" max="5" value="3"
-            onchange="generarMatrices()" required>
-          <button type="button" class="btn-increment" onclick="incrementValue('filas')">+</button>
-        </div>
-      </div>
-
-      <div class="mb-3 custom-number-input">
-        <label for="columnas" class="form-label">Ingrese el número de columnas:</label>
-        <div class="input-container">
-          <button type="button" class="btn-decrement" onclick="decrementValue('columnas')">-</button>
-          <input id="columnas" type="number" name="columnas" class="form-control no-manual" min="1" max="5" value="3"
-            onchange="generarMatrices()" required>
-          <button type="button" class="btn-increment" onclick="incrementValue('columnas')">+</button>
-        </div>
-      </div>
-
-      <!-- Contenedores para las matrices -->
+    <form action="/suma" method="POST" class="mt-4">
       <div class="row">
         <div class="col-md-6">
           <h4>Matriz 1</h4>
           <div id="matriz1">
-            <!-- Aquí se generarán los inputs de la matriz 1 -->
+            <!-- Matriz fija de 3x3 -->
+            {% for i in range(3) %}
+            <div class="matrix-row">
+              {% for j in range(3) %}
+              <input type="number" name="matriz1_{{ i }}_{{ j }}" class="matrix-input" required>
+              {% endfor %}
+            </div>
+            {% endfor %}
           </div>
         </div>
 
         <div class="col-md-6">
           <h4>Matriz 2</h4>
           <div id="matriz2">
-            <!-- Aquí se generarán los inputs de la matriz 2 -->
+            <!-- Matriz fija de 3x3 -->
+            {% for i in range(3) %}
+            <div class="matrix-row">
+              {% for j in range(3) %}
+              <input type="number" name="matriz2_{{ i }}_{{ j }}" class="matrix-input" required>
+              {% endfor %}
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
 
       <div class="text-center mt-4 login-box">
-        <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">
+        <button type="submit" class="btn btn-primary">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-          Calcular Resta
+          Calcular Suma
         </button>
       </div>
 
@@ -245,23 +85,22 @@
   <hr class="animated-line">
 
   <!-- Mostrar el resultado si existe -->
-{% if resultado %}
-<div class="table-container">
-  <div class="mt-5">
-    <h4>Resultado de la Suma</h4>
-    <table class="table table-bordered">
-      {% for fila in resultado %}
-      <tr>
-        {% for elem in fila %}
-        <td>{{ elem }}</td>
+  {% if resultado %}
+  <div class="table-container">
+    <div class="mt-5">
+      <h4>Resultado de la Suma</h4>
+      <table class="table table-bordered">
+        {% for fila in resultado %}
+        <tr>
+          {% for elem in fila %}
+          <td>{{ elem }}</td>
+          {% endfor %}
+        </tr>
         {% endfor %}
-      </tr>
-      {% endfor %}
-    </table>
+      </table>
+    </div>
   </div>
-</div>
-{% endif %}
-
+  {% endif %}
 
 </body>
 

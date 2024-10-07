@@ -109,6 +109,7 @@ body.loaded {
 .matrix-input {
     width: 50px;
     text-align: center;
+    margin-top: 10px;
 }
 table {
     margin: 20px auto;

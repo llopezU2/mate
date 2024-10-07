@@ -157,58 +157,60 @@
         </a>
 
         <!-- CARD DE MULTIPLICACION(FALTA) -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h1 class="titulos">Multiplicación de Matrices</h1>
-                </div>
-                <div class="flip-card-back">
-
-                    <div class="container">
-                        <h2 class="fade-in">3. Multiplicación de Matrices \(A \cdot B\):</h2>
-                        <p class="fade-in">
-                            La multiplicación de matrices es un poco más compleja. <br> Para multiplicar
-                            dos matrices, el número de columnas de la primera <br> matriz debe ser igual
-                            al número de filas de la segunda matriz. La multiplicación <br> se realiza tomando
-                            las filas de la primera matriz y multiplicándolas <br> por las columnas de la segunda
-                            matriz, <br> sumando los productos obtenidos.
-                        </p>
-                        <p class="equations fade-in">
-                            \[ A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
-                            \end{pmatrix}, \quad B = \begin{pmatrix} 9 & 8 & 7 \\ 6 & 5 & 4
-                            \\ 3 & 2 & 1 \end{pmatrix} \]
-                        </p>
-                        <p class="ecuacion fade-in">
-                            \[
-                            A \times B = \begin{pmatrix}
-                            (1 \cdot 9 + 2 \cdot 6 + 3 \cdot 3) & (1 \cdot 8 + 2 \cdot 5 + 3 \cdot 2) & (1 \cdot 7 + 2
-                            \cdot 4 + 3 \cdot 1) \\
-                            (4 \cdot 9 + 5 \cdot 6 + 6 \cdot 3) & (4 \cdot 8 + 5 \cdot 5 + 6 \cdot 2) & (4 \cdot 7 + 5
-                            \cdot 4 + 6 \cdot 1) \\
-                            (7 \cdot 9 + 8 \cdot 6 + 9 \cdot 3) & (7 \cdot 8 + 8 \cdot 5 + 9 \cdot 2) & (7 \cdot 7 + 8
-                            \cdot 4 + 9 \cdot 1)
-                            \end{pmatrix}
-                            \]
-                        </p>
-                        <h4>
-                            La suma de las matrices A y B da como resultado la siguiente
-                            matriz:
-                        </h4>
-                        <p class="equations fade-in">
-                            \[
-                            A \times B = \begin{pmatrix}
-                            30 & 24 & 18 \\
-                            84 & 69 & 54 \\
-                            138 & 114 & 90
-                            \end{pmatrix}
-                            \]
-                        </p>
-
+        <a href="{{ url_for('multiplicacion')}}" class="button">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h1 class="titulos">Multiplicación de Matrices</h1>
                     </div>
-
+                    <div class="flip-card-back">
+    
+                        <div class="container">
+                            <h2 class="fade-in">3. Multiplicación de Matrices \(A \cdot B\):</h2>
+                            <p class="fade-in">
+                                La multiplicación de matrices es un poco más compleja. <br> Para multiplicar
+                                dos matrices, el número de columnas de la primera <br> matriz debe ser igual
+                                al número de filas de la segunda matriz. La multiplicación <br> se realiza tomando
+                                las filas de la primera matriz y multiplicándolas <br> por las columnas de la segunda
+                                matriz, <br> sumando los productos obtenidos.
+                            </p>
+                            <p class="equations fade-in">
+                                \[ A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+                                \end{pmatrix}, \quad B = \begin{pmatrix} 9 & 8 & 7 \\ 6 & 5 & 4
+                                \\ 3 & 2 & 1 \end{pmatrix} \]
+                            </p>
+                            <p class="ecuacion fade-in">
+                                \[
+                                A \times B = \begin{pmatrix}
+                                (1 \cdot 9 + 2 \cdot 6 + 3 \cdot 3) & (1 \cdot 8 + 2 \cdot 5 + 3 \cdot 2) & (1 \cdot 7 + 2
+                                \cdot 4 + 3 \cdot 1) \\
+                                (4 \cdot 9 + 5 \cdot 6 + 6 \cdot 3) & (4 \cdot 8 + 5 \cdot 5 + 6 \cdot 2) & (4 \cdot 7 + 5
+                                \cdot 4 + 6 \cdot 1) \\
+                                (7 \cdot 9 + 8 \cdot 6 + 9 \cdot 3) & (7 \cdot 8 + 8 \cdot 5 + 9 \cdot 2) & (7 \cdot 7 + 8
+                                \cdot 4 + 9 \cdot 1)
+                                \end{pmatrix}
+                                \]
+                            </p>
+                            <h4>
+                                La suma de las matrices A y B da como resultado la siguiente
+                                matriz:
+                            </h4>
+                            <p class="equations fade-in">
+                                \[
+                                A \times B = \begin{pmatrix}
+                                30 & 24 & 18 \\
+                                84 & 69 & 54 \\
+                                138 & 114 & 90
+                                \end{pmatrix}
+                                \]
+                            </p>
+    
+                        </div>
+    
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <hr class="animated-line">
@@ -286,6 +288,276 @@
                         <div class="flip-card-inner2">
                             <div class="flip-card-front2">
                                 <h1 class="titulos">Método de Cofactores</h1>
+    
+                            </div>
+                            <div class="flip-card-back2">
+                                <div class="container2">
+                                    <h2 class="fade-in2">Pasos para calcular el determinante usando cofactores</h2>
+                                    <p class="fade-in2">
+                                        Ejemplo: Determinante de una matriz 3x3
+                                    </p>
+                                    <p class="equation3">
+                                        \[ A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+                                        \end{pmatrix}\]
+                                    </p>
+    
+                                    <p class="fade-in2">Paso 1: Elige una fila o columna para desarrollar el determinante.
+                                         En este ejemplo, usaremos la primera fila.</p>
+                                         <p>Paso 2: Calcula el cofactor de cada elemento de la fila elegida. Los cofactores se calculan eliminando 
+                                            la fila y la columna del elemento correspondiente y multiplicando por \( (-1)^{i+j} \).
+                                        </p>  
+                                        
+                                        <p class="ecuacion fade-in">
+                                        
+                                            Cofactor de \[ A_{11} = (-1)^{1+1} \times \begin{vmatrix} 5 & 6 \\ 8 & 9 \end{vmatrix} = 1 \times ((5 \times 9) - (6 \times 8)) = 1 \times (45 - 48) = -3 \]
+    
+                                        </p>
+                                            
+                                            <p class="ecuacion fade-in">
+                                            Cofactor de \[ A_{11} = (-1)^{1+1} \times \begin{vmatrix} 5 & 6 \\ 8 & 9 \end{vmatrix} = 1 \times (45 - 48) = -3 \]
+    
+                                            </p>
+                                            
+                                            <p class="ecuacion fade-in">
+                                            Cofactor de \[ A_{13} = (-1)^{1+3} \times \begin{vmatrix} 4 & 5 \\ 7 & 8 \end{vmatrix} = 1 \times ((4 \times 8) - (5 \times 7)) = 1 \times (32 - 35) = -3 \]
+    
+                                        </p>
+    
+                                        <p class="fade-in2">
+                                            Paso 3: Calcula el determinante sumando los productos de cada elemento de la fila elegida por su cofactor:
+                                        </p>
+    
+                                        <p class="ecuacion fade-in">
+    
+                                            \[ \text{Det}(A) = (1 \times -3) + (2 \times 6) + (3 \times -3) \]
+    
+                                        </p>
+                                        <p class="ecuacion fade-in"></p>
+    
+                                        \[ \text{Det}(A) = -3 + 12 - 9 = 0 \]
+    
+                                        </p>
+    
+                                        <h3 class="fade-in2">Resultado
+    
+                                        </h3>
+    
+                                        <p class="fade-in2"> El determinante de la matriz A es 0
+                                            
+                                        </p>
+                                    
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Fin del flip-card -->
+            </a>
+        </div> <!-- Fin del contenedor flexbox -->
+
+        <hr class="animated-line">
+
+        <div class="section-wrapper"> <!-- Nuevo contenedor flexbox -->
+            <div class="section-content"> <!-- Información del cofactor-->
+                <h1 class="alinear2">Método de Regresion</h1>
+                <p>
+                    El método de cofactores se utiliza para encontrar el determinante de matrices cuadradas de cualquier
+                    tamaño. Para entenderlo mejor, primero debes conocer dos conceptos clave: el <strong>menor</strong>
+                    y el <strong>cofactor</strong>.
+                <ul>
+                    <li>
+                        <strong>Menor de un elemento:</strong> Es el determinante de la matriz que se obtiene eliminando
+                        la fila y la columna del elemento seleccionado.
+                    </li>
+                    <li>
+                        <strong>Cofactor de un elemento:</strong> Es el menor del elemento, multiplicado por
+                        \((-1)^{i+j}\), donde \(i\) es el número de la fila y \(j\) el número de la columna del
+                        elemento.
+                    </li>
+                </ul>
+                </p>
+
+                <p>
+                    <strong>Aplicaciones del Método de Cofactores</strong><br>
+                    El <strong>determinante</strong> calculado usando el método de cofactores tiene varias aplicaciones, como:
+                    <ul>
+                        <li>
+                            <strong>Solución de sistemas de ecuaciones:</strong> Determinar si un sistema tiene solución única, infinita o ninguna solución.
+                        </li>
+                        <li>
+                            <strong>Cálculo de áreas y volúmenes:</strong> En geometría analítica y cálculo vectorial.
+                        </li>
+                        <li>
+                            <strong>Transformaciones lineales:</strong> Para entender cómo una transformación afecta el espacio en el que opera (como la rotación o escalado de objetos).
+                        </li>
+                    </ul>
+                </p>
+                
+                <p>
+                    <strong>Ventajas del Método de Cofactores</strong><br>
+                    <ul>
+                        <li>
+                            <strong>Aplicable a matrices de cualquier tamaño:</strong> Aunque se vuelve más complejo a medida que la matriz crece, es un método versátil.
+                        </li>
+                        <li>
+                            <strong>Fácil de entender en matrices pequeñas:</strong> Para matrices 2x2 y 3x3, el proceso es directo y fácil de seguir.
+                        </li>
+                    </ul>
+                </p>
+                
+                <p>
+                    <strong>Limitaciones</strong><br>
+                    <ul>
+                        <li>
+                            <strong>Cálculo manual:</strong> Para matrices grandes, el método de cofactores se vuelve tedioso, pero los programas computacionales facilitan su implementación.
+                        </li>
+                    </ul>
+                </p>
+                
+                
+            </div>
+
+            <a href="{{ url_for('cofactor') }}" class="flip-card-container2">
+                <div> <!-- Flip-card a la derecha -->
+                    <div class="flip-card2">
+                        <div class="flip-card-inner2">
+                            <div class="flip-card-front2">
+                                <h1 class="titulos">Método de Regresion</h1>
+    
+                            </div>
+                            <div class="flip-card-back2">
+                                <div class="container2">
+                                    <h2 class="fade-in2">Pasos para calcular el determinante usando cofactores</h2>
+                                    <p class="fade-in2">
+                                        Ejemplo: Determinante de una matriz 3x3
+                                    </p>
+                                    <p class="equation3">
+                                        \[ A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+                                        \end{pmatrix}\]
+                                    </p>
+    
+                                    <p class="fade-in2">Paso 1: Elige una fila o columna para desarrollar el determinante.
+                                         En este ejemplo, usaremos la primera fila.</p>
+                                         <p>Paso 2: Calcula el cofactor de cada elemento de la fila elegida. Los cofactores se calculan eliminando 
+                                            la fila y la columna del elemento correspondiente y multiplicando por \( (-1)^{i+j} \).
+                                        </p>  
+                                        
+                                        <p class="ecuacion fade-in">
+                                        
+                                            Cofactor de \[ A_{11} = (-1)^{1+1} \times \begin{vmatrix} 5 & 6 \\ 8 & 9 \end{vmatrix} = 1 \times ((5 \times 9) - (6 \times 8)) = 1 \times (45 - 48) = -3 \]
+    
+                                        </p>
+                                            
+                                            <p class="ecuacion fade-in">
+                                            Cofactor de \[ A_{11} = (-1)^{1+1} \times \begin{vmatrix} 5 & 6 \\ 8 & 9 \end{vmatrix} = 1 \times (45 - 48) = -3 \]
+    
+                                            </p>
+                                            
+                                            <p class="ecuacion fade-in">
+                                            Cofactor de \[ A_{13} = (-1)^{1+3} \times \begin{vmatrix} 4 & 5 \\ 7 & 8 \end{vmatrix} = 1 \times ((4 \times 8) - (5 \times 7)) = 1 \times (32 - 35) = -3 \]
+    
+                                        </p>
+    
+                                        <p class="fade-in2">
+                                            Paso 3: Calcula el determinante sumando los productos de cada elemento de la fila elegida por su cofactor:
+                                        </p>
+    
+                                        <p class="ecuacion fade-in">
+    
+                                            \[ \text{Det}(A) = (1 \times -3) + (2 \times 6) + (3 \times -3) \]
+    
+                                        </p>
+                                        <p class="ecuacion fade-in"></p>
+    
+                                        \[ \text{Det}(A) = -3 + 12 - 9 = 0 \]
+    
+                                        </p>
+    
+                                        <h3 class="fade-in2">Resultado
+    
+                                        </h3>
+    
+                                        <p class="fade-in2"> El determinante de la matriz A es 0
+                                            
+                                        </p>
+                                    
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Fin del flip-card -->
+            </a>
+        </div> <!-- Fin del contenedor flexbox -->
+
+        <hr class="animated-line">
+
+        <div class="section-wrapper"> <!-- Nuevo contenedor flexbox -->
+            <div class="section-content"> <!-- Información del cofactor-->
+                <h1 class="alinear2">Método de Reducción</h1>
+                <p>
+                    El método de cofactores se utiliza para encontrar el determinante de matrices cuadradas de cualquier
+                    tamaño. Para entenderlo mejor, primero debes conocer dos conceptos clave: el <strong>menor</strong>
+                    y el <strong>cofactor</strong>.
+                <ul>
+                    <li>
+                        <strong>Menor de un elemento:</strong> Es el determinante de la matriz que se obtiene eliminando
+                        la fila y la columna del elemento seleccionado.
+                    </li>
+                    <li>
+                        <strong>Cofactor de un elemento:</strong> Es el menor del elemento, multiplicado por
+                        \((-1)^{i+j}\), donde \(i\) es el número de la fila y \(j\) el número de la columna del
+                        elemento.
+                    </li>
+                </ul>
+                </p>
+
+                <p>
+                    <strong>Aplicaciones del Método de Cofactores</strong><br>
+                    El <strong>determinante</strong> calculado usando el método de cofactores tiene varias aplicaciones, como:
+                    <ul>
+                        <li>
+                            <strong>Solución de sistemas de ecuaciones:</strong> Determinar si un sistema tiene solución única, infinita o ninguna solución.
+                        </li>
+                        <li>
+                            <strong>Cálculo de áreas y volúmenes:</strong> En geometría analítica y cálculo vectorial.
+                        </li>
+                        <li>
+                            <strong>Transformaciones lineales:</strong> Para entender cómo una transformación afecta el espacio en el que opera (como la rotación o escalado de objetos).
+                        </li>
+                    </ul>
+                </p>
+                
+                <p>
+                    <strong>Ventajas del Método de Cofactores</strong><br>
+                    <ul>
+                        <li>
+                            <strong>Aplicable a matrices de cualquier tamaño:</strong> Aunque se vuelve más complejo a medida que la matriz crece, es un método versátil.
+                        </li>
+                        <li>
+                            <strong>Fácil de entender en matrices pequeñas:</strong> Para matrices 2x2 y 3x3, el proceso es directo y fácil de seguir.
+                        </li>
+                    </ul>
+                </p>
+                
+                <p>
+                    <strong>Limitaciones</strong><br>
+                    <ul>
+                        <li>
+                            <strong>Cálculo manual:</strong> Para matrices grandes, el método de cofactores se vuelve tedioso, pero los programas computacionales facilitan su implementación.
+                        </li>
+                    </ul>
+                </p>
+                
+                
+            </div>
+
+            <a href="{{ url_for('reduccion') }}" class="flip-card-container2">
+                <div> <!-- Flip-card a la derecha -->
+                    <div class="flip-card2">
+                        <div class="flip-card-inner2">
+                            <div class="flip-card-front2">
+                                <h1 class="titulos">Método de Reducción</h1>
     
                             </div>
                             <div class="flip-card-back2">
