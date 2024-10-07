@@ -275,7 +275,7 @@ body.loaded {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .section-content {
@@ -289,8 +289,8 @@ body.loaded {
     justify-content: center;
     align-items: center;
     text-align: left;
-    margin-top: 50px;
-    line-height: 1.6;
+    margin-top: 10px;
+    line-height: 2;
 }
 
 /* Estilos para ecuaciones */
