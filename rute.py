@@ -14,26 +14,34 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# Ruta para la regresión lineal
+# Ruta principal que renderiza la página con el formulario
 @app.route('/regresion', methods=['GET', 'POST'])
 def regresion():
-    if request.method == 'POST':
-        try:
-            x_values = request.form['x_values']
-            y_values = request.form['y_values']
-            x = [float(i) for i in x_values.split(',')]
-            y = [float(i) for i in y_values.split(',')]
-
-            m, b, r = calcular_regresion(x, y)  # Incluimos el coeficiente de correlación 'r'
-            plot_path = os.path.join('static', 'plot_regresion.png')
-            graficar_regresion(x, y, m, b, r, plot_path)  # Pasamos 'r' para mostrar en la gráfica
-
-            return render_template('regresion.html', m=m, b=b, r=r, plot_url=plot_path)
-        
-        except Exception as e:
-            return render_template('regresion.html', error=str(e))
-    
     return render_template('regresion.html')
+
+# Ruta para calcular la regresión y graficar
+@app.route('/regresion_calculo', methods=['POST'])
+def regresion_calculo():
+    try:
+        # Obtenemos los valores de X e Y desde el formulario
+        x_values = request.form.getlist('x_values[]')
+        y_values = request.form.getlist('y_values[]')
+
+        # Convertimos los valores a float
+        x = [float(i) for i in x_values]
+        y = [float(i) for i in y_values]
+
+        # Calculamos la regresión
+        m, b, r = calcular_regresion(x, y)
+        plot_path = os.path.join('static', 'plot_regresion.png')
+        graficar_regresion(x, y, m, b, r, plot_path)
+
+        return render_template('regresion.html', m=m, b=b, r=r, plot_url=plot_path)
+    
+    except Exception as e:
+        return render_template('regresion.html', error=str(e))
+
+
 
 @app.route('/cofactor', methods=['GET', 'POST'])
 def cofactor():

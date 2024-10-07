@@ -3,25 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regresión Lineal</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='regresion.css') }}" />
+    <title>Regresión Lineal por Mínimos Cuadrados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='regresion.css') }}">
+    <script>
+        // Función para generar los inputs dinámicos
+        function generarInputs() {
+            const numInputs = document.getElementById("num_inputs").value; // Obtener el número de inputs deseados
+            const xContainer = document.getElementById("x_container");
+            const yContainer = document.getElementById("y_container");
 
+            // Limpiar contenedores previos
+            xContainer.innerHTML = '';
+            yContainer.innerHTML = '';
+
+            // Generar los inputs para X e Y
+            for (let i = 0; i < numInputs; i++) {
+                // Inputs para X
+                const inputX = document.createElement("input");
+                inputX.type = "text";
+                inputX.name = "x_values[]";
+                inputX.className = "input";
+                inputX.required = true;
+                xContainer.appendChild(inputX);
+
+                // Agregar coma después del input excepto en el último
+                if (i < numInputs - 1) {
+                    xContainer.appendChild(document.createTextNode(", "));
+                }
+
+                // Inputs para Y
+                const inputY = document.createElement("input");
+                inputY.type = "text";
+                inputY.name = "y_values[]";
+                inputY.className = "input";
+                inputY.required = true;
+                yContainer.appendChild(inputY);
+
+                // Agregar coma después del input excepto en el último
+                if (i < numInputs - 1) {
+                    yContainer.appendChild(document.createTextNode(", "));
+                }
+            }
+        }
+
+        
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    
+    </script>
 </head>
 <body>
+
+    <nav class="navbar">
+        <!-- Logo de la empresa -->
+        <div class="navbar-logo">
+            <a href="{{ url_for('index')}}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo" />
+            </a>
+        </div>
+        <!-- Navbar -->
+        <ul class="nav-links">
+            <li>
+                <a href="{{ url_for('index') }}">Matriz con Operaciones básicas</a>
+            </li>
+            <li>
+                <a href="{{ url_for('cofactor') }}">Metodo de Cofactores</a>
+            </li>
+            <li><a href="{{ url_for('reduccion') }}">Ir a Reducción de Sistemas</a></li>
+            <li><a href="#">Créditos</a></li>
+        </ul>
+    </nav>
+
+
+
     <h1>Regresión Lineal por Mínimos Cuadrados</h1>
 
-    <!-- Formulario para ingresar los valores de X e Y -->
-    <form action="/regresion" method="POST">
-        <label for="x_values">Valores de X (separados por comas):</label><br>
-        <input class="input" type="text" id="x_values" name="x_values" required><br><br>
+    <!-- Formulario para ingresar el número de valores de X e Y -->
+    <form id="input_form" action="javascript:void(0);">
+        <label for="num_inputs" class="valores" >N valores:</label><br>
+        <input type="number" id="num_inputs" name="num_inputs" min="1" required>
 
-        <label for="y_values">Valores de Y (separados por comas):</label><br>
-        <input class="input" type="text" id="y_values" name="y_values" required><br><br>
-
-        <button type="submit">Calcular y Graficar</button>
+        <div class="text-center mt-4 login-box">
+            <button onclick="generarInputs()"  type="submit" class="btn btn-primary">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              OK
+            </button>
+          </div>
     </form>
 
     <br>
+
+    <!-- Formulario para ingresar los valores de X e Y -->
+    <form action="/regresion_calculo" method="POST">
+        <h3 class="ingresarvalores">Ingrese los valores de X y de Y:</h3>
+
+        <label class="valoresxy">Valores de X:</label>
+        <div id="x_container"></div> <!-- Aquí se generarán los inputs de X -->
+
+        <br><br>
+
+        <label class="valoresxy">Valores de Y:</label>
+        <div id="y_container"></div> <!-- Aquí se generarán los inputs de Y -->
+
+        <br><br>
+
+        <div class="text-center mt-4 login-box">
+            <button type="submit" class="btn btn-primary">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Calcular Regresion
+            </button>
+          </div>
+    </form>
 
     <!-- Mostrar los resultados si existen -->
     {% if m and b %}
@@ -35,5 +134,6 @@
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
+
 </body>
 </html>

@@ -1,7 +1,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Fondo oscuro */
+    background-color: #000000;
+    /* Fondo oscuro */
     color: #fff;
     opacity: 0;
     transition: opacity 1.5s ease-in;
@@ -14,7 +15,8 @@ body.loaded {
 .animated-line {
     border: none;
     height: 2px;
-    background-color: transparent; /* Línea transparente para que no interfiera */
+    background-color: transparent;
+    /* Línea transparente para que no interfiera */
     position: relative;
     overflow: hidden;
 }
@@ -35,6 +37,7 @@ body.loaded {
     0% {
         left: -100%;
     }
+
     50%,
     100% {
         left: 100%;
@@ -50,28 +53,34 @@ body.loaded {
 /* Estilos de la navbar */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Distribuye el logo, los enlaces y la parte derecha */
+    justify-content: space-between;
+    /* Distribuye el logo, los enlaces y la parte derecha */
     align-items: center;
-    background-color: #000000; /* Fondo de la navbar */
+    background-color: #000000;
+    /* Fondo de la navbar */
     padding: 10px 20px;
     border-bottom: 1px solid #333;
 }
 
 .navbar-logo {
-    flex: 1; /* Logo ocupa espacio, pero no afecta el centrado de los enlaces */
+    flex: 1;
+    /* Logo ocupa espacio, pero no afecta el centrado de los enlaces */
 }
 
 .logo {
-    width: 80px; /* Tamaño del logo */
+    width: 80px;
+    /* Tamaño del logo */
 }
 
 /* Centrar los enlaces */
 .nav-links {
     display: flex;
     justify-content: center;
-    flex-grow: 2; /* Ocupa más espacio para centrar los enlaces */
+    flex-grow: 2;
+    /* Ocupa más espacio para centrar los enlaces */
     list-style-type: none;
-    gap: 30px; /* Espacio entre los links */
+    gap: 30px;
+    /* Espacio entre los links */
     margin-right: 20%;
     margin-top: 20px;
     padding: 0;
@@ -83,11 +92,14 @@ body.loaded {
 
 .nav-links a {
     text-decoration: none;
-    color: #fff; /* Color blanco para los enlaces */
+    color: #fff;
+    /* Color blanco para los enlaces */
     font-size: 16px;
-    padding: 5px 0; /* Añade algo de espacio alrededor del texto */
+    padding: 5px 0;
+    /* Añade algo de espacio alrededor del texto */
     position: relative;
-    transition: all 0.3s ease-in-out; /* Suaviza la animación */
+    transition: all 0.3s ease-in-out;
+    /* Suaviza la animación */
 }
 
 .nav-links a::after {
@@ -97,13 +109,17 @@ body.loaded {
     right: 0;
     bottom: 0;
     height: 3px;
-    background-color: white; /* Color del borde */
-    transform: scaleX(0); /* Inicialmente invisible */
-    transition: transform 0.3s ease-in-out; /* Transición suave */
+    background-color: white;
+    /* Color del borde */
+    transform: scaleX(0);
+    /* Inicialmente invisible */
+    transition: transform 0.3s ease-in-out;
+    /* Transición suave */
 }
 
 .nav-links a:hover::after {
-    transform: scaleX(1); /* Borde crece horizontalmente */
+    transform: scaleX(1);
+    /* Borde crece horizontalmente */
 }
 
 .matrix-input {
@@ -123,30 +139,37 @@ body.loaded {
     font-size: 18px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: #111; /* Fondo oscuro para la tabla */
-    color: #fff; /* Texto blanco */
+    background-color: #111;
+    /* Fondo oscuro para la tabla */
+    color: #fff;
+    /* Texto blanco */
 }
 
 /* Estilo para las celdas y bordes */
-.table th, .table td {
-    border: 1px solid #444; /* Bordes oscuros */
+.table th,
+.table td {
+    border: 1px solid #444;
+    /* Bordes oscuros */
     padding: 12px 15px;
 }
 
 /* Estilo para las filas pares */
 .table tr:nth-child(even) {
-    background-color: #1a1a1a; /* Color de fondo alternativo para las filas pares */
+    background-color: #1a1a1a;
+    /* Color de fondo alternativo para las filas pares */
 }
 
 /* Efecto hover en las filas */
 .table tr:hover {
-    background-color: #333; /* Color cuando se pasa el mouse sobre una fila */
+    background-color: #333;
+    /* Color cuando se pasa el mouse sobre una fila */
     cursor: default;
 }
 
 /* Estilos para los encabezados de las columnas */
 .table th {
-    background-color: #03a9f4; /* Color de fondo para los encabezados */
+    background-color: #03a9f4;
+    /* Color de fondo para los encabezados */
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
@@ -158,15 +181,17 @@ body.loaded {
         font-size: 16px;
         width: 95%;
     }
-    
-    .table th, .table td {
+
+    .table th,
+    .table td {
         padding: 8px;
     }
 }
 
 
 /* Contenedor de las matrices */
-#matriz1, #matriz2 {
+#matriz1,
+#matriz2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,19 +200,24 @@ body.loaded {
 }
 
 /* Estilo de cada fila de la matriz */
-#matriz1 .row, #matriz2 .row {
+#matriz1 .row,
+#matriz2 .row {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px; /* Espacio entre filas */
+    margin-bottom: 10px;
+    /* Espacio entre filas */
 }
 
 /* Estilo de los inputs dentro de las matrices */
-#matriz1 input, #matriz2 input {
+#matriz1 input,
+#matriz2 input {
     text-align: center;
     color: #fff;
-    margin-right: 10px; /* Espacio entre columnas */
+    margin-right: 10px;
+    /* Espacio entre columnas */
     font-size: 1.2rem;
-    width: 60px; /* Tamaño de cada celda */
+    width: 60px;
+    /* Tamaño de cada celda */
     height: 60px;
     border-radius: 5px;
     border: 2px solid rgb(255, 255, 255);
@@ -197,15 +227,19 @@ body.loaded {
 }
 
 /* Estilo cuando se hace focus en un input */
-#matriz1 input:focus, #matriz2 input:focus {
+#matriz1 input:focus,
+#matriz2 input:focus {
     border-color: #0080b3;
     outline: none;
 }
 
 /* Estilo adicional para que se vea mejor en pantallas pequeñas */
 @media (max-width: 768px) {
-    #matriz1 input, #matriz2 input {
-        width: 45px; /* Tamaño más pequeño para pantallas pequeñas */
+
+    #matriz1 input,
+    #matriz2 input {
+        width: 45px;
+        /* Tamaño más pequeño para pantallas pequeñas */
         height: 45px;
         font-size: 1rem;
     }
@@ -227,7 +261,8 @@ body.loaded {
     font-size: 16px;
     overflow: hidden;
     transition: 0.5s;
-    background-color: #03a8f400; /* Color base del botón */
+    background-color: #03a8f400;
+    /* Color base del botón */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -258,7 +293,9 @@ body.loaded {
     0% {
         left: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         left: 100%;
     }
 }
@@ -277,7 +314,9 @@ body.loaded {
     0% {
         top: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         top: 100%;
     }
 }
@@ -296,7 +335,9 @@ body.loaded {
     0% {
         right: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         right: 100%;
     }
 }
@@ -315,7 +356,9 @@ body.loaded {
     0% {
         bottom: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         bottom: 100%;
     }
 }
@@ -330,6 +373,7 @@ body.loaded {
     width: 100%;
     margin-top: 25px;
 }
+
 .table-bordered {
     width: 50%;
     border-collapse: collapse;
@@ -348,18 +392,21 @@ body.loaded {
 }
 
 .table-bordered th {
-    background-color: #03a9f4; /* Color de fondo para el encabezado */
+    background-color: #03a9f4;
+    /* Color de fondo para el encabezado */
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
 }
 
 .table-bordered tr:nth-child(even) {
-    background-color: #000000; /* Color para las filas pares */
+    background-color: #000000;
+    /* Color para las filas pares */
 }
 
 .table-bordered tr:hover {
-    background-color: #56563f77; /* Color cuando se pasa el mouse sobre una fila */
+    background-color: #56563f77;
+    /* Color cuando se pasa el mouse sobre una fila */
     cursor: default;
 }
 
@@ -404,7 +451,8 @@ input::-webkit-outer-spin-button {
 }
 
 input.no-manual[onkeydown="return false;"] {
-    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede escribir manualmente */
+    cursor: not-allowed;
+    /* Cambia el cursor para indicar que no se puede escribir manualmente */
 }
 
 /* Ocultar los botones predeterminados de incremento y decremento */
@@ -468,7 +516,3 @@ input[type="number"] {
     display: block;
     margin-bottom: 10px;
 }
-
-
-
-
