@@ -55,9 +55,8 @@ def multiplicar_matriz_vector(a, c):
 
     return resultado
 
-# Función principal que sigue la lógica de la imagen proporcionada
+
 def reducir_matrices(A, C):
-    # Calcular la inversa de la matriz A y su determinante usando cofactores
     A_inversa, determinante = inversa_por_cofactores(A)
     
     # Multiplicar la inversa de A por el vector C

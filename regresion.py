@@ -11,20 +11,16 @@ def calcular_regresion(x, y):
     sum_x2 = sum(xi ** 2 for xi in x)
     sum_y2 = sum(yi ** 2 for yi in y)
 
-    # Calcular la pendiente (m)
     m = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x ** 2)
     x_media = sum_x / n
     y_media = sum_y / n
 
-    # Calcular la intersección (b)
     b = y_media - m * x_media
 
-    # Calcular el coeficiente de correlación (r)
     r_numerador = n * sum_xy - sum_x * sum_y
     r_denominador = ((n * sum_x2 - sum_x ** 2) * (n * sum_y2 - sum_y ** 2)) ** 0.5
     r = r_numerador / r_denominador if r_denominador != 0 else 0
 
-    # Redondear resultados
     m = round(m, 2)
     b = round(b, 2)
     r = round(r, 4)
@@ -45,7 +41,6 @@ def main():
     x = [1, 2, 3, 4, 5]  # Ejemplo de datos de X
     y = [2, 4, 5, 4, 5]  # Ejemplo de datos de Y
     
-    # Calcular regresión y coeficiente de correlación
     m, b, r = calcular_regresion(x, y)
     
     print(f"La ecuación de la recta es: y = {b} + {m}x")
