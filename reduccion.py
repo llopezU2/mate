@@ -8,17 +8,17 @@ def determinante(a):
 def matriz_inversa(a):
     inversa = [[0, 0, 0] for _ in range(3)]
 
-    inversa[0][0] = (a[1][1] * a[2][2] - a[1][2] * a[2][1])  # Cofactor A00
-    inversa[0][1] = -(a[1][0] * a[2][2] - a[1][2] * a[2][0])  # Cofactor A01
-    inversa[0][2] = (a[1][0] * a[2][1] - a[1][1] * a[2][0])  # Cofactor A02
+    inversa[0][0] = (a[1][1] * a[2][2] - a[1][2] * a[2][1])  
+    inversa[0][1] = -(a[1][0] * a[2][2] - a[1][2] * a[2][0])  
+    inversa[0][2] = (a[1][0] * a[2][1] - a[1][1] * a[2][0])  
 
-    inversa[1][0] = -(a[0][1] * a[2][2] - a[0][2] * a[2][1])  # Cofactor A10
-    inversa[1][1] = (a[0][0] * a[2][2] - a[0][2] * a[2][0])  # Cofactor A11
-    inversa[1][2] = -(a[0][0] * a[2][1] - a[0][1] * a[2][0])  # Cofactor A12
+    inversa[1][0] = -(a[0][1] * a[2][2] - a[0][2] * a[2][1])  
+    inversa[1][1] = (a[0][0] * a[2][2] - a[0][2] * a[2][0])  
+    inversa[1][2] = -(a[0][0] * a[2][1] - a[0][1] * a[2][0])  
 
-    inversa[2][0] = (a[0][1] * a[1][2] - a[0][2] * a[1][1])  # Cofactor A20
-    inversa[2][1] = -(a[0][0] * a[1][2] - a[0][2] * a[1][0])  # Cofactor A21
-    inversa[2][2] = (a[0][0] * a[1][1] - a[0][1] * a[1][0])  # Cofactor A22
+    inversa[2][0] = (a[0][1] * a[1][2] - a[0][2] * a[1][1])  
+    inversa[2][1] = -(a[0][0] * a[1][2] - a[0][2] * a[1][0])  
+    inversa[2][2] = (a[0][0] * a[1][1] - a[0][1] * a[1][0]) 
 
     return inversa
 

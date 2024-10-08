@@ -74,7 +74,7 @@ def suma():
         except Exception as e:
             return render_template('suma.html', error="Error al realizar la suma de matrices.")
     
-    # Si es GET, renderizar la página en blanco
+    
     return render_template('suma.html')
 
 @app.route('/resta', methods=['GET', 'POST'])
@@ -93,7 +93,6 @@ def resta():
         except Exception as e:
             return render_template('resta.html', error="Error al realizar la resta de matrices.")
     
-    # Si es GET, renderizar la página en blanco
     return render_template('resta.html')
 
 
@@ -113,7 +112,7 @@ def multiplicacion():
         except Exception as e:
             return render_template('multiplicacion.html', error="Error al realizar la multiplicación de matrices.")
     
-    # Si es GET, renderizar la página en blanco
+    
     return render_template('multiplicacion.html')
 
 @app.route('/reduccion', methods=['GET', 'POST'])
@@ -132,7 +131,7 @@ def reduccion():
         except Exception as e:
             return render_template('reduccion.html', error="Error al realizar la reducción de matrices.")
     
-    # Si es GET, renderizar la página en blanco
+   
     return render_template('reduccion.html')
 
 
