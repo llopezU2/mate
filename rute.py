@@ -4,7 +4,7 @@ from regresion import calcular_regresion, graficar_regresion
 from resta import restar_matrices
 from suma import sumar_matrices
 from multiplicacion import multiplicar_matrices
-from reduccion import reducir_matrices  # Importar la función de reducción de matrices
+from reduccion import reducir_matrices  
 
 import os
 
@@ -14,24 +14,19 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# Ruta principal que renderiza la página con el formulario
 @app.route('/regresion', methods=['GET', 'POST'])
 def regresion():
     return render_template('regresion.html')
 
-# Ruta para calcular la regresión y graficar
 @app.route('/regresion_calculo', methods=['POST'])
 def regresion_calculo():
     try:
-        # Obtenemos los valores de X e Y desde el formulario
         x_values = request.form.getlist('x_values[]')
         y_values = request.form.getlist('y_values[]')
 
-        # Convertimos los valores a float
         x = [float(i) for i in x_values]
         y = [float(i) for i in y_values]
 
-        # Calculamos la regresión
         m, b, r = calcular_regresion(x, y)
         plot_path = os.path.join('static', 'plot_regresion.png')
         graficar_regresion(x, y, m, b, r, plot_path)
@@ -62,11 +57,9 @@ def cofactor():
 def suma():
     if request.method == 'POST':
         try:
-            # Obtener las matrices desde el formulario
             matriz1 = [[int(request.form[f'matriz1_{i}_{j}']) for j in range(3)] for i in range(3)]
             matriz2 = [[int(request.form[f'matriz2_{i}_{j}']) for j in range(3)] for i in range(3)]
 
-            # Calcular la suma de las matrices
             resultado = sumar_matrices(matriz1, matriz2)
 
             return render_template('suma.html', resultado=resultado)
@@ -81,11 +74,9 @@ def suma():
 def resta():
     if request.method == 'POST':
         try:
-            # Obtener las matrices desde el formulario
             matriz1 = [[int(request.form[f'matriz1_{i}_{j}']) for j in range(3)] for i in range(3)]
             matriz2 = [[int(request.form[f'matriz2_{i}_{j}']) for j in range(3)] for i in range(3)]
 
-            # Calcular la resta de las matrices
             resultado = restar_matrices(matriz1, matriz2)
 
             return render_template('resta.html', resultado=resultado)
@@ -100,11 +91,9 @@ def resta():
 def multiplicacion():
     if request.method == 'POST':
         try:
-            # Obtener las matrices desde el formulario
             matriz1 = [[int(request.form[f'matriz1_{i}_{j}']) for j in range(3)] for i in range(3)]
             matriz2 = [[int(request.form[f'matriz2_{i}_{j}']) for j in range(3)] for i in range(3)]
 
-            # Calcular la multiplicación de las matrices
             resultado = multiplicar_matrices(matriz1, matriz2)
 
             return render_template('multiplicacion.html', resultado=resultado)
@@ -119,11 +108,9 @@ def multiplicacion():
 def reduccion():
     if request.method == 'POST':
         try:
-            # Obtener la matriz A y el vector C desde el formulario
             matriz1 = [[int(request.form[f'matriz1_{i}_{j}']) for j in range(3)] for i in range(3)]
             vector_c = [int(request.form[f'vector_c_{i}']) for i in range(3)]
 
-            # Calcular la reducción de matrices (inversa de A multiplicada por C) y el determinante
             x, Y, Z, determinante = reducir_matrices(matriz1, vector_c)
 
             return render_template('reduccion.html', x=x, Y=Y, Z=Z, determinante=determinante)

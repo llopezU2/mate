@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt # type: ignore
+import matplotlib.pyplot as plt
 
 def calcular_regresion(x, y):
     if len(x) != len(y):
@@ -38,15 +38,14 @@ def graficar_regresion(x, y, m, b, r, output_path):
     plt.close()
 
 def main():
-    x = [1, 2, 3, 4, 5]  # Ejemplo de datos de X
-    y = [2, 4, 5, 4, 5]  # Ejemplo de datos de Y
+    x = [1, 2, 3, 4, 5]  
+    y = [2, 4, 5, 4, 5]  
     
     m, b, r = calcular_regresion(x, y)
     
     print(f"La ecuación de la recta es: y = {b} + {m}x")
     print(f"Coeficiente de correlación (r): {r}")
     
-    # Guardar la gráfica
     output_path = 'grafica.png'
     graficar_regresion(x, y, m, b, r, output_path)
     print(f"Gráfica guardada en: {output_path}")
